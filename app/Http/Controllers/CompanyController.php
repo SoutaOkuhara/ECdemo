@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class CompanyController extends Controller
 {
     public function index(Request $request){
+        $user = Auth::user();
         $items = DB::select('select * from company');
-        return view('company.index',['items'=>$items]);
+        $param = ['items'=>$items,'user'=>$user];
+        return view('company.index',$param);
     }
 
     public function add(Request $request){

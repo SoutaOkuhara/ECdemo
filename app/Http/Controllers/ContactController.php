@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ContactController extends Controller
 {
     public function index(Request $request){
+        $user = Auth::user();
         $items = DB::select('select * from contact');
-        return view('contact.list',['items'=>$items]);
+        $param = ['items'=>$items,'user'=>$user];
+        return view('contact.list',$param);
     }
 
     public function add(Request $request){
