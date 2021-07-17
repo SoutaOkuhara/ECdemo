@@ -1,8 +1,8 @@
 @extends("layouts.indexapp")
-@section("title",'user')
+@section("title",'MyPage')
 @section('menubar')
     @parent
-    ユーザー一覧ページ
+    マイページ
 @endsection
 
 @section('content')
@@ -11,14 +11,14 @@
 @else
 <p>※ログインしていません。(<a href="/login">ログイン</a> | <a href="/register">登録</a>)</p>
 @endif
+    @foreach($items as $item)
     <table>
-     <tr><th>name</th><th>mail</th><th>age</th></tr>
-     @foreach($items as $item)
+     <tr><th>productName</th><th>price</th><th>detail</th></tr>
         <tr>
             <td>{{$item->name}}</td>
-            <td>{{$item->mail}}</td>
-            <td>{{$item->age}}</td>
-        </tr>
-    @endforeach    
+            <td>{{$item->price}}</td>
+            <td>{{$item->detail}}</td>
+        </tr>  
     </table>
+    @endforeach  
 @endsection

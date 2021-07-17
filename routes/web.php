@@ -27,12 +27,12 @@ Route::post('product/del','IndexController@remove');
 Route::get('product/shop','IndexController@shop');
 Route::post('product/shop','IndexController@postSession');
 
-Route::get('user','userController@index')->middleware("auth");
-Route::post('user','userController@post');
-Route::get('user/add','userController@add');
-Route::post('user/add','userController@create');
-Route::get('user/auth','userController@getAuth');
-Route::post('user/auth','userController@postAuth');
+Route::get('user','UserController@index')->middleware("auth");
+Route::post('user','UserController@post');
+Route::get('user/add','UserController@add');
+Route::post('user/add','UserController@create');
+Route::get('user/auth','UserController@getAuth');
+Route::post('user/auth','UserController@postAuth');
 
 
 Route::get('company','CompanyController@index')->middleware("auth");
@@ -51,6 +51,8 @@ Route::get('person','PersonController@index');
 
 Route::post('review','ReviewController@index')->middleware("auth");
 Route::post('review/add','ReviewController@add');
+
+Route::get('mypage','MyPageController@index')->middleware("auth");
 
 Auth::routes();
 

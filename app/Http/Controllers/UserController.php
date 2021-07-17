@@ -11,9 +11,8 @@ class UserController extends Controller
 {
     public function index(Request $request){
         $user = Auth::user();
-        $sort = $request->sort;
-        $items = Person::orderBy($sort,'asc');
-        $param = ['items'=>$items,'sort'=>$sort,'user'=>$user];
+        $items = Person::all();
+        $param = ['items'=>$items,'user'=>$user];
         return view('people.index',$param);
     }
 
