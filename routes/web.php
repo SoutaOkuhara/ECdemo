@@ -31,6 +31,9 @@ Route::get('user','userController@index');
 Route::post('user','userController@post');
 Route::get('user/add','userController@add');
 Route::post('user/add','userController@create');
+Route::get('user/auth','userController@getAuth');
+Route::post('user/auth','userController@postAuth');
+
 
 Route::get('company','CompanyController@index');
 Route::get('company/add','CompanyController@add');
@@ -43,3 +46,5 @@ Route::post('company/edit','CompanyController@update');
 Route::get('contact/list','ContactController@index');
 Route::get('contact','ContactController@add');
 Route::post('contact','ContactController@create');
+
+Route::get('person','PersonController@index');

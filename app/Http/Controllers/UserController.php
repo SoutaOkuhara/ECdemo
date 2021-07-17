@@ -4,16 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\Person;
 
 class UserController extends Controller
 {
     public function index(Request $request){
-        $items = DB::select('select * from user');
-        return view('user.index',['items'=>$items]);
+        $user = Auth::user();
+        $sort = $request->sort;
+        $items = Person::orderBy($sort,'asc');
+        $param = ['items'=>$items,'sort'=>$sort,'user'=>$user];
+        return view('people.index',$param);
     }
 
     public function add(Request $request){
-        return view('user.add');
+        return view('people.add');
     }
 
     public function create(Request $request){
@@ -22,7 +27,23 @@ class UserController extends Controller
             'mail'=>$request->mail,
             'age'=>$request->age,
         ];
-        DB::insert('insert into user (name,mail,age) values (:name,:mail,:age)',$param);
+        DB::insert('insert into people (name,mail,age) values (:name,:mail,:age)',$param);
         return redirect('/user');
+    }
+
+    public function getAuth(Request $request){
+        $param = ['message'=>'ログインしてください。'];
+        return view('people.auth',$param);
+    }
+
+    public function postAuth(Request $request){
+        $email = $request->email;
+        $password = $request->password;
+        if(Auth::attempt(['email'=>$email,'password'=>$password])){
+            $msg='ログインしました。('.Auth::user()->name.')';
+        }else{
+            $msg = 'ログインに失敗しました。';
+        }
+        return view('people.auth',['message'=>$msg]);
     }
 }
