@@ -9,12 +9,10 @@
 <p>{{$session_data}}</p>
     <table>
      <tr><th>productName</th><th>price</th><th>detail</th></tr>
-     @foreach($items as $item)
         <tr>
             <td>{{$item->name}}</td>
             <td>{{$item->price}}</td>
             <td>{{$item->detail}}</td>
-        </tr>
-    @endforeach    
+        </tr>  
     </table>
 @endsection

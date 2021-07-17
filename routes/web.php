@@ -48,6 +48,10 @@ Route::get('contact','ContactController@add');
 Route::post('contact','ContactController@create');
 
 Route::get('person','PersonController@index');
+
+Route::post('review','ReviewController@index')->middleware("auth");
+Route::post('review/add','ReviewController@add');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
