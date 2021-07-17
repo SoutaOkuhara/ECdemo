@@ -19,6 +19,7 @@
             <td>{{$item->detail}}</td>
         </tr>
     </table>
+    <p>レビュー</p>
     @foreach($items1 as $item1)
     <table>
      <tr><th>Name</th><th>星</th><th>本文</th></tr>
@@ -28,7 +29,8 @@
             <td>{{$item1->detail}}</td>
         </tr>  
     </table>
-    @endforeach  
+    @endforeach 
+    <p>レビュー投稿欄</p> 
     <form action="/review/add" method="post">
         @csrf
             <p>Name:<input type="text" name = "name"></p>

@@ -26,6 +26,7 @@ Route::get('product/del','IndexController@del');
 Route::post('product/del','IndexController@remove');
 Route::get('product/shop','IndexController@shop');
 Route::post('product/shop','IndexController@postSession');
+Route::post('product/search','IndexController@search');
 
 Route::get('user','UserController@index')->middleware("auth");
 Route::post('user','UserController@post');

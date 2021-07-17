@@ -71,4 +71,16 @@ class IndexController extends Controller
         $item = DB::select('select * from product where name=:name',$param);
         return view('product.session',['item'=>$item[0],'session_data'=>$sesdata]);
     }
+
+    public function search(Request $request){
+        $para1 = ['searchName'=>$request->searchName];
+        $items = DB::table('product')->whereRaw("name LIKE  '%' || :searchName || '%'",["searchName" => $para1])->get();
+        if($items === null){
+            $msg = "検索結果はありませんでした";
+            return view('product.search',['items'=>$items,'msg'=>$msg]);
+        }else{
+            $msg = "検索結果";
+            return view('product.search',['items'=>$items,'msg'=>$msg]);
+        }
+    }
 }

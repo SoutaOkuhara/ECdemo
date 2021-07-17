@@ -1,21 +1,13 @@
 @extends("layouts.indexapp")
-@section("title",'product')
+@section("title",'Search')
 @section('menubar')
     @parent
-    買い物ページ
+    検索結果ページ
 @endsection
 
 @section('content')
-    <p>商品名検索</p>
-    <form action="/product/search" method = "post">
-        @csrf
-            <tr>
-                <td><input type="text" name="searchName"></td>
-                <td><input type="submit" value ='検索' name="search"></td>
-    </form>  
-
-    <p>商品一覧</p>
-    <table>
+<p>{{$msg}}</p>
+<table>
      <tr><th>productName</th><th>price</th><th>detail</th><th>buy</th><th>review</th></tr>
      @foreach($items as $item)
     <form action="/product/shop" method = "post">
