@@ -21,7 +21,7 @@
 
     <p>商品一覧</p>
     <table>
-     <tr><th>productName</th><th>price</th><th>detail</th><th>buy</th><th></th><th>review</th><th></th><th>お気に入り登録</th></tr>
+     <tr><th>productName</th><th>price</th><th>detail</th></tr>
      @foreach($items as $item)
     <form action="/product/shop" method = "post">
     @csrf

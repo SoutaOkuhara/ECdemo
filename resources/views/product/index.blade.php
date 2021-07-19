@@ -18,7 +18,16 @@
             <td>{{$item->name}}</td>
             <td>{{$item->price}}</td>
             <td>{{$item->detail}}</td>
+            <form action="/product/del">
+                <td><input type="submit" value="削除"></td>
+                <input type="hidden" name="id" value="{{$item->id}}">
+            </form>
+            <form action="/product/edit">
+                <td><input type="submit" value="編集"></td>
+                <input type="hidden" name="id" value="{{$item->id}}">
+            </form>
         </tr>
     @endforeach    
     </table>
+    <p><a href="/product/add">商品追加</a></p>
 @endsection

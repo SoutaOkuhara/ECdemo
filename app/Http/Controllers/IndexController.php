@@ -26,7 +26,7 @@ class IndexController extends Controller
             'detail'=>$request->detail,
         ];
         DB::insert('insert into product (name,price,detail) values (:name,:price,:detail)',$param);
-
+        return redirect('/product');
     }
 
     public function del(Request $request){
@@ -75,14 +75,15 @@ class IndexController extends Controller
     }
 
     public function search(Request $request){
+        $user = Auth::user();
         $para1 = ['searchName'=>$request->searchName];
         $items = DB::table('product')->whereRaw("name LIKE  '%' || :searchName || '%'",["searchName" => $para1])->get();
         if(empty($items->all())){
             $msg = "検索結果はありませんでした";
-            return view('product.search',['items'=>$items,'msg'=>$msg]);
+            return view('product.search',['items'=>$items,'msg'=>$msg,'user'=>$user]);
         }else{
             $msg = "検索結果";
-            return view('product.search',['items'=>$items,'msg'=>$msg]);
+            return view('product.search',['items'=>$items,'msg'=>$msg,'user'=>$user]);
         }
     }
 

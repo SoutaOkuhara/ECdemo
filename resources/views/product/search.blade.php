@@ -6,9 +6,14 @@
 @endsection
 
 @section('content')
+@if(Auth::check())
+<p>USER:{{$user->name.'('.$user->email.')'}}</p>
+@else
+<p>※ログインしていません。(<a href="/login">ログイン</a> | <a href="/register">登録</a>)</p>
+@endif
 <p>{{$msg}}</p>
 <table>
-     <tr><th>productName</th><th>price</th><th>detail</th><th>buy</th><th>review</th></tr>
+     <tr><th>productName</th><th>price</th><th>detail</th></tr>
      @foreach($items as $item)
     <form action="/product/shop" method = "post">
     @csrf
@@ -19,6 +24,7 @@
             <td><input type="submit" value ='カートに追加' name="buy"></td>
             <input type="hidden" name="buy" value="{{$item->name}}">
     </form>   
+    <td></td>
             <form action="/review" method='post'>
                 <td>
                     @csrf 
@@ -26,6 +32,12 @@
                     <input type="hidden" name="name" value ="{{$item->name}}">
                 <td>
             </form>
+            <form action="/product/fav" method = "post">
+            @csrf
+            <td><input type="submit" value = "お気に入りに登録"></td>   
+            <input type="hidden" name = "favName" value = "{{$user->name}}"> 
+            <input type="hidden" name = "favProduct" value = "{{$item->name}}">
+        </form>
         </tr>    
     @endforeach    
     </table>
