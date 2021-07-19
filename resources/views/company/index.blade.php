@@ -17,7 +17,16 @@
         <tr>
             <td>{{$item->name}}</td>
             <td>{{$item->mail}}</td>
+            <form action="/company/del">
+                <td><input type="submit" value="削除"></td>
+                <input type="hidden" name="id" value="{{$item->id}}">
+            </form>
+            <form action="/company/edit">
+                <td><input type="submit" value="編集"></td>
+                <input type="hidden" name="id" value="{{$item->id}}">
+            </form>
         </tr>
     @endforeach  
 </table>
+<p><a href="/company/add">運営会社追加</a></p>
 @endsection

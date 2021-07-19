@@ -1,5 +1,5 @@
 @extends("layouts.indexapp")
-@section("title",'product')
+@section("title",'shop')
 @section('menubar')
     @parent
     買い物ページ
@@ -18,7 +18,7 @@
                 <td><input type="text" name="searchName"></td>
                 <td><input type="submit" value ='検索' name="search"></td>
     </form>  
-
+    <p><a href="/contact">お問い合わせページへ</a></p>
     <p>商品一覧</p>
     <table>
      <tr><th>productName</th><th>price</th><th>detail</th></tr>
