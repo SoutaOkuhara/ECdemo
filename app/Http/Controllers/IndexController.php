@@ -93,6 +93,6 @@ class IndexController extends Controller
             'favProduct'=>$request->favProduct,
         ];
         DB::insert('insert into myPage (name,productName) values (:favName,:favProduct)',$param);
-        return redirect('/product/shop');
+        return redirect('/mypage');
     }
 }
