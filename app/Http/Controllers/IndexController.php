@@ -26,7 +26,7 @@ class IndexController extends Controller
             'detail'=>$request->detail,
         ];
         DB::insert('insert into product (name,price,detail) values (:name,:price,:detail)',$param);
-        return redirect('/product');
+
     }
 
     public function del(Request $request){
@@ -59,8 +59,10 @@ class IndexController extends Controller
     }
 
     public function shop(Request $request){
+        $user = Auth::user();
         $items = DB::select('select * from product');
-        return view('product.shop',['items'=>$items]);
+        $param = ['items'=>$items,'user'=>$user];
+        return view('product.shop',$param);
     }
 
     public function postSession(Request $request){
@@ -75,12 +77,21 @@ class IndexController extends Controller
     public function search(Request $request){
         $para1 = ['searchName'=>$request->searchName];
         $items = DB::table('product')->whereRaw("name LIKE  '%' || :searchName || '%'",["searchName" => $para1])->get();
-        if($items === null){
+        if(empty($items->all())){
             $msg = "検索結果はありませんでした";
             return view('product.search',['items'=>$items,'msg'=>$msg]);
         }else{
             $msg = "検索結果";
             return view('product.search',['items'=>$items,'msg'=>$msg]);
         }
+    }
+
+    public function fav(Request $request){
+        $param = [
+            'favName'=>$request->favName,
+            'favProduct'=>$request->favProduct,
+        ];
+        DB::insert('insert into myPage (name,productName) values (:favName,:favProduct)',$param);
+        return redirect('/product/shop');
     }
 }

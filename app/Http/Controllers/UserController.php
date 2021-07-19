@@ -11,23 +11,9 @@ class UserController extends Controller
 {
     public function index(Request $request){
         $user = Auth::user();
-        $items = Person::all();
+        $items = DB::select('select * from users');
         $param = ['items'=>$items,'user'=>$user];
         return view('people.index',$param);
-    }
-
-    public function add(Request $request){
-        return view('people.add');
-    }
-
-    public function create(Request $request){
-        $param = [
-            'name'=>$request->name,
-            'mail'=>$request->mail,
-            'age'=>$request->age,
-        ];
-        DB::insert('insert into people (name,mail,age) values (:name,:mail,:age)',$param);
-        return redirect('/user');
     }
 
     public function getAuth(Request $request){

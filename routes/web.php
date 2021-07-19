@@ -25,13 +25,12 @@ Route::post('product/edit','IndexController@update');
 Route::get('product/del','IndexController@del');
 Route::post('product/del','IndexController@remove');
 Route::get('product/shop','IndexController@shop');
-Route::post('product/shop','IndexController@postSession');
+Route::post('product/shop','IndexController@postSession')->middleware("auth");
 Route::post('product/search','IndexController@search');
+Route::post('product/fav','IndexController@fav');
+
 
 Route::get('user','UserController@index')->middleware("auth");
-Route::post('user','UserController@post');
-Route::get('user/add','UserController@add');
-Route::post('user/add','UserController@create');
 Route::get('user/auth','UserController@getAuth');
 Route::post('user/auth','UserController@postAuth');
 
