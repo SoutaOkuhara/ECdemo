@@ -1,4 +1,4 @@
-@extends("layouts.indexapp")
+@extends("layouts.shopapp")
 @section("title",'productAdd')
 @section('menubar')
     @parent
@@ -12,7 +12,7 @@
     <tr><th>Name:</th><td><input type="text" name = "name"></td></tr>
     <tr><th>price:</th><td><input type="text" name = "price"></td></tr>
     <tr><th>detail:</th><td><input type="text" name = "detail"></td></tr>
-    <tr><th></th><td><input type="submit" value="send"></td></tr>
+    <tr><th></th><td><input type="submit" value="send" class = "button"></td></tr>
 </table>
 </form>
 @endsection

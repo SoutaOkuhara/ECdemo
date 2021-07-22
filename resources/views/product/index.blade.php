@@ -1,13 +1,13 @@
-@extends("layouts.indexapp")
+@extends("layouts.shopapp")
 @section("title",'product')
 @section('menubar')
     @parent
-    商品ページ
+    商品一覧ページ
 @endsection
 
 @section('content')
 @if(Auth::check())
-<p>USER:{{$user->name.'('.$user->email.')'}}</p>
+<p class ="user">USER:{{$user->name.'('.$user->email.')'}}<a href="/mypage">マイページへ</a></p>
 @else
 <p>※ログインしていません。(<a href="/login">ログイン</a> | <a href="/register">登録</a>)</p>
 @endif
@@ -19,11 +19,11 @@
             <td>{{$item->price}}</td>
             <td>{{$item->detail}}</td>
             <form action="/product/del">
-                <td><input type="submit" value="削除"></td>
+                <td><input type="submit" value="削除" class = "button"></td>
                 <input type="hidden" name="id" value="{{$item->id}}">
             </form>
             <form action="/product/edit">
-                <td><input type="submit" value="編集"></td>
+                <td><input type="submit" value="編集" class = "button"></td>
                 <input type="hidden" name="id" value="{{$item->id}}">
             </form>
         </tr>
