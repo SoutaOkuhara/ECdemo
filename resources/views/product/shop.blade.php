@@ -20,6 +20,7 @@
     </form>  
     <p><a href="/contact">お問い合わせページへ</a></p>
     <p>商品一覧</p>
+    <p>{{$msg}}</p>
     <table>
      <tr><th>productName</th><th>price</th><th>detail</th></tr>
      @foreach($items as $item)

@@ -11,8 +11,7 @@ class IndexController extends Controller
     public function index(Request $request){
         $user = Auth::user();
         $items = DB::select('select * from product');
-        $param = ['items'=>$items,'user'=>$user];
-        return view('product.index',$param);
+        return view('product.index',['items'=>$items,'user'=>$user]);
     }
 
     public function add(Request $request){
@@ -60,8 +59,15 @@ class IndexController extends Controller
 
     public function shop(Request $request){
         $user = Auth::user();
-        $items = DB::select('select * from product');
-        $param = ['items'=>$items,'user'=>$user];
+        $nowtime = date("H");
+        if(12<$nowtime and $nowtime<15){
+            $items = DB::select('select *,cast (price * 0.7 as INT) [price] from product');
+            $msg = '30%OFFセール中！！';
+        }else{
+            $items = DB::select('select * from product');
+             $msg = 'Welcome to EC!!';
+        }
+        $param = ['items'=>$items,'user'=>$user,'msg'=>$msg];
         return view('product.shop',$param);
     }
 
@@ -80,11 +86,11 @@ class IndexController extends Controller
         $items = DB::table('product')->whereRaw("name LIKE  '%' || :searchName || '%'",["searchName" => $para1])->get();
         if(empty($items->all())){
             $msg = "検索結果はありませんでした";
-            return view('product.search',['items'=>$items,'msg'=>$msg,'user'=>$user]);
         }else{
             $msg = "検索結果";
-            return view('product.search',['items'=>$items,'msg'=>$msg,'user'=>$user]);
         }
+        $param = ['items'=>$items,'user'=>$user,'msg'=>$msg];
+        return view('product.search',$param);
     }
 
     public function fav(Request $request){
