@@ -2,7 +2,7 @@
 @section("title",'BasketPage')
 @section('menubar')
     @parent
-    マイページ
+    カートページ
 @endsection
 
 @section('content')

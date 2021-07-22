@@ -33,6 +33,7 @@ Route::post('product/fav','IndexController@fav');
 Route::get('user','UserController@index')->middleware("auth");
 Route::get('user/auth','UserController@getAuth');
 Route::post('user/auth','UserController@postAuth');
+Route::get('user/logout','UserController@logout');
 
 
 Route::get('company','CompanyController@index')->middleware("auth");

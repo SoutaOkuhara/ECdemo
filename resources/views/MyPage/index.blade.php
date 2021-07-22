@@ -8,6 +8,9 @@
 @section('content')
 @if(Auth::check())
 <p>USER:{{$user->name.'('.$user->email.')'}}</p>
+<form action="/user/logout">
+    <input type="submit" value = "LogOut">
+</form>
 @else
 <p>※ログインしていません。(<a href="/login">ログイン</a> | <a href="/register">登録</a>)</p>
 @endif

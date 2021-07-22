@@ -25,10 +25,15 @@ class UserController extends Controller
         $email = $request->email;
         $password = $request->password;
         if(Auth::attempt(['email'=>$email,'password'=>$password])){
-            $msg='ログインしました。('.Auth::user()->name.')';
+            return redirect('/mypage');
         }else{
-            $msg = 'ログインに失敗しました。';
+            $param = ['message'=>'ログインに失敗しました。'];
+            return view('people.auth',$param);
         }
-        return view('people.auth',['message'=>$msg]);
+    }
+
+    public function logout(Request $request){
+        Auth::logout();
+        return redirect('/user/auth');
     }
 }
