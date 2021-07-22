@@ -66,12 +66,12 @@ class IndexController extends Controller
     }
 
     public function postSession(Request $request){
-        $msg=$request->buy;
-        $request->session()->put('msg',$msg);
-        $param = ['name'=>$request->buy];
-        $sesdata = $request->session()->get('msg').'がカートに追加されました。';
-        $item = DB::select('select * from product where name=:name',$param);
-        return view('product.session',['item'=>$item[0],'session_data'=>$sesdata]);
+        $param = [
+            'productname'=>$request->buy,
+            'username'=>$request->username,
+        ];
+        DB::insert('insert into basket (username,productname) values (:username,:productname)',$param);
+        return redirect('/mypage/basket');
     }
 
     public function search(Request $request){

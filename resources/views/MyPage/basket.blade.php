@@ -1,5 +1,5 @@
 @extends("layouts.indexapp")
-@section("title",'MyPage')
+@section("title",'BasketPage')
 @section('menubar')
     @parent
     マイページ
@@ -11,7 +11,7 @@
 @else
 <p>※ログインしていません。(<a href="/login">ログイン</a> | <a href="/register">登録</a>)</p>
 @endif
-<p>お気に入り商品一覧</p>
+<p>カート一覧</p>
 <table>
      <tr><th>productName</th><th>price</th><th>detail</th></tr>
      @foreach($items as $item)   
@@ -21,24 +21,27 @@
             <td>{{$item->name}}</td>
             <td>{{$item->price}}</td>
             <td>{{$item->detail}}</td>
-            <td><input type="submit" value ='カートに追加' name="buy"></td>
-            <td><input type="hidden" name="buy" value="{{$item->name}}"></td>
-            <input type="hidden" name="username" value="{{$user->name}}">
     </form>   
         <form action="/review" method='post'>
         @csrf 
             <td><input type="submit" value = "レビューへ移動"><td>
             <input type="hidden" name="name" value ="{{$item->name}}">
         </form>
-        <form action="/mypage" method = 'post'>
+        <form action="/mypage/basket" method = 'post'>
         @csrf
-            <td><input type="submit" value="お気に入りから削除"></td>
+            <td><input type="submit" value="カートから削除"></td>
             <input type="hidden" name = "productname" value="{{$item->name}}">
             <input type="hidden" name="username" value="{{$user->name}}">
         </form>
         </tr>    
     @endforeach    
     </table>
-    <p><a href="/product/shop">ショップページに戻る</a></p>
-    <p><a href="/mypage/basket">カートページに移動する</a></p>
+    @foreach($sum as $sum)
+    <p>合計金額：{{$sum->addprice}}円</p>
+    @endforeach
+    <form action="">
+        <input type="submit" value = "購入する">
+    </form>
+    <p><a href="/product/shop">ショップページに移動する</a></p>
+    <p><a href="/mypage">マイページに移動する</a></p>
 @endsection

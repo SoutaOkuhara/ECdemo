@@ -53,6 +53,9 @@ Route::post('review','ReviewController@index')->middleware("auth");
 Route::post('review/add','ReviewController@add');
 
 Route::get('mypage','MyPageController@index')->middleware("auth");
+Route::post('mypage','MyPageController@del');
+Route::get('mypage/basket','MyPageController@basket')->middleware("auth");
+Route::post('mypage/basket','MyPageController@basketdel');
 
 Auth::routes();
 
