@@ -15,7 +15,9 @@
      <tr><th>productName</th><th>price</th><th>detail</th><th>point</th></tr>
      @foreach($items as $item)
         <tr>
-            <td>{{$item->name}}</td>
+        <form action="/product/detailadd">
+            <td><input type="submit" name = "detail" value="{{$item->name}}"></td>
+        </form>
             <td>{{$item->price}}</td>
             <td>{{$item->detail}}</td>
             <td>{{$item->point}}</td>

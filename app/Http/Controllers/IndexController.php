@@ -101,4 +101,31 @@ class IndexController extends Controller
         DB::insert('insert into myPage (name,productName) values (:favName,:favProduct)',$param);
         return redirect('/mypage');
     }
+
+    public function detailaddget(Request $request){
+        $param = ['detail'=>$request->detail];
+        $item = DB::select('select * from product where name = :detail',$param);
+        return view('product.detailadd',['form'=>$item[0]]);
+    }
+
+    public function detailaddpost(Request $request){
+        $user = Auth::user();
+        $param = [
+            'name'=>$request->name,
+            'price'=>$request->price,
+            'detail'=>$request->detail,
+            'photo'=>$request->photo,
+        ];
+        $para1 = ['name'=>$request->name];
+        DB::insert('insert into prodetail (name,price,detail,photo) values (:name,:price,:detail,:photo)',$param);
+        $item = DB::select('select * from prodetail where name = :name',$para1);
+        return view('product.detail',['item'=>$item[0],'user'=>$user]);
+    }
+
+    public function detail(Request $request){
+        $user = Auth::user();
+        $param = ['detail'=>$request->detail];
+        $item = DB::select('select * from prodetail where name = :detail',$param);
+        return view('product.detail',['item'=>$item[0],'user'=>$user]);
+    }
 }
