@@ -40,9 +40,7 @@
     @foreach($sum as $sum)
     <p>合計金額：{{$sum->addprice}}円</p>
     @endforeach
-    <form action="">
-        <input type="submit" value = "購入する">
-    </form>
+    <a href="/mypage/buy"><button>購入ページへ</button></a>
     <p><a href="/product/shop">ショップページに移動する</a></p>
     <p><a href="/mypage">マイページに移動する</a></p>
 @endsection

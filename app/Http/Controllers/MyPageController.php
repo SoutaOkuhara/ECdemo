@@ -43,4 +43,26 @@ class MyPageController extends Controller
         DB::delete('delete from basket where productname = :productname and username = :username',$param);
         return redirect('/mypage/basket');
     }
+
+    public function buy(Request $request){
+        $user = Auth::user();
+        $para1 = ['username'=>$user->name];
+        $items = DB::select('select * from product where name in (select productname from basket where username = :username)',$para1);
+        $sum = DB::select('select sum(price) as addprice from product where name in (select productname from basket where username = :username)',$para1);
+        $point = DB::select('select sum(point) as addpoint from product where name in (select productname from basket where username = :username)',$para1);
+        $param = ['items'=>$items,'user'=>$user,'sum'=>$sum,'point'=>$point];
+        return view('Mypage.buy',$param);
+    }
+
+    public function thanks(Request $request){
+        $user = Auth::user();
+        $para1 = ['username'=>$user->name];
+        $para2 = [
+            'username'=>$user->name,
+            'point'=>$request->point,
+            ];
+        DB::delete('delete from basket where username = :username',$para1);
+        DB::update('update point set name=:username,point=:point + point where name=:username',$para2);
+        return view('Mypage.thanks',['user'=>$user]);
+    }
 }
