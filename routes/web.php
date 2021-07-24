@@ -47,6 +47,9 @@ Route::post('company/edit','CompanyController@update');
 Route::get('contact/list','ContactController@index')->middleware("auth");
 Route::get('contact','ContactController@add');
 Route::post('contact','ContactController@create');
+Route::get('contact/anslist','ContactController@answerlist')->middleware("auth");
+Route::get('contact/ans','ContactController@ansget');
+Route::post('contact/ans','ContactController@anspost');
 
 Route::get('person','PersonController@index');
 

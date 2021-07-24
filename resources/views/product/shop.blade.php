@@ -15,7 +15,7 @@
                 <td><input type="text" name="searchName"></td>
                 <td><input type="submit" value ='検索' name="search" class="button"></td>
     </form>  
-    <p><a href="/contact">お問い合わせページへ</a></p>
+    <p><a href="/contact/list">お問い合わせ一覧ページへ</a></p>
 
     <div class = "main">
         <h3>商品一覧</h3>

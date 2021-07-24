@@ -7,6 +7,7 @@
 
 @section('content')
 <p>{{$message}}</p>
+<p><a href="/register">アカウントを新規作成する</a></p>
 <form action="/user/auth" method="post">
     <table>
         @csrf
