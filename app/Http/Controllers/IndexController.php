@@ -24,7 +24,7 @@ class IndexController extends Controller
             'price'=>$request->price,
             'detail'=>$request->detail,
         ];
-        DB::insert('insert into product (name,price,detail) values (:name,:price,:detail)',$param);
+        DB::insert('insert into product (name,price,detail,point) values (:name,:price,:detail,:price*0.01)',$param);
         return redirect('/product');
     }
 

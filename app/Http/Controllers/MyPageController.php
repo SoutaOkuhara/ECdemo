@@ -11,8 +11,9 @@ class MyPageController extends Controller
     public function index(Request $request){
         $user = Auth::user();
         $para1 = ['username'=>$user->name];
+        $point = DB::select('select point from point where name = :username',$para1);
         $items = DB::select('select * from product where name in (select productName from myPage where name = :username)',$para1);
-        $param = ['items'=>$items,'user'=>$user];
+        $param = ['items'=>$items,'user'=>$user,'point'=>$point];
         return view('MyPage.index',$param);
     }
 

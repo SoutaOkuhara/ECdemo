@@ -77,9 +77,6 @@
 <body>
     <h1>@yield('title')</h1>
     @section('menubar')
-    <ul>
-        <li>@show</li>
-    </ul>
     <div class = "content">
     @yield('content')
     </div>

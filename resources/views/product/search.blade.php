@@ -13,7 +13,7 @@
 @endif
 <p>{{$msg}}</p>
 <table>
-     <tr><th>productName</th><th>price</th><th>detail</th></tr>
+     <tr><th>productName</th><th>price</th><th>detail</th><th>point</th></tr>
      @foreach($items as $item)
     <form action="/product/shop" method = "post">
     @csrf
@@ -21,6 +21,7 @@
             <td>{{$item->name}}</td>
             <td>{{$item->price}}</td>
             <td>{{$item->detail}}</td>
+            <td>{{$item->point}}</td>
             <td><input type="submit" value ='カートに追加' name="buy" class="button"></td>
             <input type="hidden" name="buy" value="{{$item->name}}">
     </form>   

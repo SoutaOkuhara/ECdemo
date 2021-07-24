@@ -8,6 +8,9 @@
 @section('content')
 @if(Auth::check())
 <p>USER:{{$user->name.'('.$user->email.')'}}</p>
+@foreach($point as $point)
+    <p>保有ポイント:{{$point->point}}</p>
+@endforeach
 <form action="/user/logout">
     <input type="submit" value = "LogOut">
 </form>
@@ -16,7 +19,7 @@
 @endif
 <p>お気に入り商品一覧</p>
 <table>
-     <tr><th>productName</th><th>price</th><th>detail</th></tr>
+     <tr><th>productName</th><th>price</th><th>detail</th><th>point</th></tr>
      @foreach($items as $item)   
      <form action="/product/shop" method = "post">
     @csrf
@@ -24,6 +27,7 @@
             <td>{{$item->name}}</td>
             <td>{{$item->price}}</td>
             <td>{{$item->detail}}</td>
+            <td>{{$item->point}}</td>
             <td><input type="submit" value ='カートに追加' name="buy"></td>
             <td><input type="hidden" name="buy" value="{{$item->name}}"></td>
             <input type="hidden" name="username" value="{{$user->name}}">

@@ -12,12 +12,13 @@
 <p>※ログインしていません。(<a href="/login">ログイン</a> | <a href="/register">登録</a>)</p>
 @endif
     <table>
-     <tr><th>productName</th><th>price</th><th>detail</th></tr>
+     <tr><th>productName</th><th>price</th><th>detail</th><th>point</th></tr>
      @foreach($items as $item)
         <tr>
             <td>{{$item->name}}</td>
             <td>{{$item->price}}</td>
             <td>{{$item->detail}}</td>
+            <td>{{$item->point}}</td>
             <form action="/product/del">
                 <td><input type="submit" value="削除" class = "button"></td>
                 <input type="hidden" name="id" value="{{$item->id}}">
