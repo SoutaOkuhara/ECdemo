@@ -22,7 +22,7 @@
     <p>レビュー</p>
     @foreach($items1 as $item1)
     <table>
-     <tr><th>Name</th><th>星</th><th>本文</th></tr>
+     <tr><th>Name</th><th>星(1~5)</th><th>本文</th></tr>
         <tr>
             <td>{{$item1->name}}</td>
             <td>{{$item1->star}}</td>

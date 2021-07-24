@@ -61,8 +61,13 @@ class MyPageController extends Controller
             'username'=>$user->name,
             'point'=>$request->point,
             ];
+        $para3 = [
+            'productname'=>$request->productname,
+            'price'=>$request->price,
+        ];    
         DB::delete('delete from basket where username = :username',$para1);
         DB::update('update point set name=:username,point=:point + point where name=:username',$para2);
+        DB::insert('insert into sales (productname,price) values (:productname,:price)',$para3);
         return view('Mypage.thanks',['user'=>$user]);
     }
 }

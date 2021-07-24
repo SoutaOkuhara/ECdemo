@@ -23,7 +23,10 @@
     @endforeach    
     </table>
     @foreach($sum as $sum)
-    <p>合計金額：{{$sum->addprice}}円</p>
+    <p>商品金額：{{$sum->addprice}}円</p>
+    <p>手数料：300円</p>
+    <hr>
+    <p>合計：{{$sum->addprice+300}}円</p>
     @endforeach
     @foreach($point as $point)
     <p>獲得ポイント：{{$point->addpoint}}</p>
@@ -31,6 +34,8 @@
         @csrf
             <input type="submit" value="購入を確定する">
             <input type="hidden" name = "point" value="{{$point->addpoint}}">
+            <input type="hidden" name = "productname" value="{{$item->name}}">
+            <input type="hidden" name = "price" value="{{$item->price}}">
     </form>
     @endforeach
 @endsection

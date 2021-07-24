@@ -33,4 +33,5 @@
     @endforeach    
     </table>
     <p><a href="/product/add">商品追加</a></p>
+    <p><a href="/product/sales">売り上げ集計</a></p>
 @endsection

@@ -119,13 +119,22 @@ class IndexController extends Controller
         $para1 = ['name'=>$request->name];
         DB::insert('insert into prodetail (name,price,detail,photo) values (:name,:price,:detail,:photo)',$param);
         $item = DB::select('select * from prodetail where name = :name',$para1);
-        return view('product.detail',['item'=>$item[0],'user'=>$user]);
+        $items1 = DB::select('select * from review where productName = :name',$para1);
+        return view('product.detail',['item'=>$item[0],'user'=>$user,'items1'=>$items1]);
     }
 
     public function detail(Request $request){
         $user = Auth::user();
         $param = ['detail'=>$request->detail];
         $item = DB::select('select * from prodetail where name = :detail',$param);
-        return view('product.detail',['item'=>$item[0],'user'=>$user]);
+        $items1 = DB::select('select * from review where productName = :detail',$param);
+        return view('product.detail',['item'=>$item[0],'user'=>$user,'items1'=>$items1]);
+    }
+
+    public function sales(Request $request){
+        $user = Auth::user();
+        $items = DB::select('select * from sales');
+        $sum = DB::select('select sum(price) as allprice from sales');
+        return view('product.sales',['items'=>$items,'user'=>$user,'sum'=>$sum]);
     }
 }
