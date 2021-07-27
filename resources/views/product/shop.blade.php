@@ -21,6 +21,10 @@
     <a href="/contact/list"><button class="button">お問い合わせ一覧ページへ</button></a>
 
     <div class = "main">
+    @if(Auth::check())
+    @else
+    <p>商品を購入するには<a href="/user/auth">ログイン</a>が必要です</p>
+    @endif
         <h3>商品一覧</h3>
         <p class = "msg">{{$msg}}</p>
         <table>
@@ -29,29 +33,42 @@
             <tr>
         <form action="/product/detail" method = "post">
         @csrf  
+        @if(Auth::check())
             <td><input type="submit" name="detail" value="{{$item->name}}" class="button"></td>
             <input type="hidden" name = "username" value="{{$user->name}}">
+        @else
+        <td>{{$item->name}}</td>
+        @endif
+
         </form>    
                 <td>{{$item->price}}</td>
                 <td>{{$item->detail}}</td>
                 <td>{{$item->point}}</td>
-        <form action="/product/shop" method = "post">
-        @csrf        
+
+        @if(Auth::check())
+            <form action="/product/shop" method = "post">
+            @csrf        
                 <td><input type="submit" value ='カートに追加' name="buy" class="button"></td>
                 <td><input type="hidden" name="buy" value="{{$item->name}}"></td>
                 <input type="hidden" name="username" value="{{$user->name}}">
-        </form>   
+            </form> 
+        @else
+        @endif 
             <form action="/review" method='post'>
             @csrf 
                 <td><input type="submit" value = "レビューへ移動" class="button"><td>
                 <input type="hidden" name="name" value ="{{$item->name}}">
             </form>
-            <form action="/product/fav" method = "post">
-                @csrf
-                <td><input type="submit" value = "お気に入りに登録" class="button"></td>   
-                <input type="hidden" name = "favName" value = "{{$user->name}}"> 
-                <input type="hidden" name = "favProduct" value = "{{$item->name}}">
-            </form>
+
+        @if(Auth::check())
+        <form action="/product/fav" method = "post">
+            @csrf
+            <td><input type="submit" value = "お気に入りに登録" class="button"></td>   
+            <input type="hidden" name = "favName" value = "{{$user->name}}"> 
+            <input type="hidden" name = "favProduct" value = "{{$item->name}}">
+        </form>
+        @else
+        @endif 
             </tr>    
         @endforeach    
         </table>

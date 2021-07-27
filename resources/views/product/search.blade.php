@@ -33,11 +33,14 @@
                     <input type="hidden" name="name" value ="{{$item->name}}">
                 <td>
             </form>
+            @if(Auth::check())
             <form action="/product/fav" method = "post">
             @csrf
             <td><input type="submit" value = "お気に入りに登録" class="button"></td>   
             <input type="hidden" name = "favName" value = "{{$user->name}}"> 
             <input type="hidden" name = "favProduct" value = "{{$item->name}}">
+            @else
+            @endif
         </form>
         </tr>    
     @endforeach    

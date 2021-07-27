@@ -18,14 +18,14 @@ Route::get('/', function () {
 });
 
 Route::get('product','IndexController@index')->middleware("auth");
-Route::get('product/add','IndexController@add');
+Route::get('product/add','IndexController@add')->middleware("auth");
 Route::post('product/add','IndexController@create');
-Route::get('product/edit','IndexController@edit');
+Route::get('product/edit','IndexController@edit')->middleware("auth");
 Route::post('product/edit','IndexController@update');
-Route::get('product/del','IndexController@del');
+Route::get('product/del','IndexController@del')->middleware("auth");
 Route::post('product/del','IndexController@remove');
 Route::get('product/shop','IndexController@shop');
-Route::post('product/shop','IndexController@postSession')->middleware("auth");
+Route::post('product/shop','IndexController@postSession');
 Route::post('product/search','IndexController@search');
 Route::post('product/fav','IndexController@fav');
 Route::get('product/detailadd','IndexController@detailaddget')->middleware("auth");
@@ -41,23 +41,23 @@ Route::get('user/logout','UserController@logout');
 
 
 Route::get('company','CompanyController@index')->middleware("auth");
-Route::get('company/add','CompanyController@add');
+Route::get('company/add','CompanyController@add')->middleware("auth");
 Route::post('company/add','CompanyController@create');
-Route::get('company/del','CompanyController@del');
+Route::get('company/del','CompanyController@del')->middleware("auth");
 Route::post('company/del','CompanyController@remove');
-Route::get('company/edit','CompanyController@edit');
+Route::get('company/edit','CompanyController@edit')->middleware("auth");
 Route::post('company/edit','CompanyController@update');
 
 Route::get('contact/list','ContactController@index');
 Route::get('contact','ContactController@add');
 Route::post('contact','ContactController@create');
 Route::get('contact/anslist','ContactController@answerlist')->middleware("auth");
-Route::get('contact/ans','ContactController@ansget');
+Route::get('contact/ans','ContactController@ansget')->middleware("auth");
 Route::post('contact/ans','ContactController@anspost');
 
 Route::get('person','PersonController@index');
 
-Route::post('review','ReviewController@index')->middleware("auth");
+Route::post('review','ReviewController@index');
 Route::post('review/add','ReviewController@add');
 
 Route::get('mypage','MyPageController@index')->middleware("auth");
