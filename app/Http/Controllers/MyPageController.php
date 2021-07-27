@@ -13,7 +13,8 @@ class MyPageController extends Controller
         $para1 = ['username'=>$user->name];
         $point = DB::select('select point from point where name = :username',$para1);
         $items = DB::select('select * from product where name in (select productName from myPage where name = :username)',$para1);
-        $param = ['items'=>$items,'user'=>$user,'point'=>$point];
+        $items1 = DB::select('select * from product where name in (select productname from view_history where username = :username limit 3)',$para1);
+        $param = ['items'=>$items,'user'=>$user,'point'=>$point,'items1'=>$items1];
         return view('MyPage.index',$param);
     }
 
@@ -75,5 +76,14 @@ class MyPageController extends Controller
         //売れ筋の個数を追加する
         DB::update('update host_selling set productname=:productname,salecount = salecount + 1 where productname=:productname',$para4);
         return view('Mypage.thanks',['user'=>$user]);
+    }
+
+    public function viewDel(Request $request){
+        $param = [
+            'productname'=>$request->productname,
+            'username'=>$request->username,
+        ];
+        DB::delete('delete from view_history where productname = :productname and username = :username',$param);
+        return redirect('/mypage');
     }
 }

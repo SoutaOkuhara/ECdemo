@@ -66,6 +66,7 @@ Route::get('mypage/basket','MyPageController@basket')->middleware("auth");
 Route::post('mypage/basket','MyPageController@basketdel');
 Route::get('mypage/buy','MyPageController@buy')->middleware("auth");
 Route::post('mypage/buy','MyPageController@thanks');
+Route::post('mypage/view/del','MyPageController@viewDel');
 
 Route::get('index','MenuController@index');
 

@@ -30,6 +30,7 @@
         <form action="/product/detail" method = "post">
         @csrf  
             <td><input type="submit" name="detail" value="{{$item->name}}" class="button"></td>
+            <input type="hidden" name = "username" value="{{$user->name}}">
         </form>    
                 <td>{{$item->price}}</td>
                 <td>{{$item->detail}}</td>

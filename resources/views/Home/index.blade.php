@@ -35,7 +35,7 @@
         <form action="/product/detail" method = "post">
         @csrf  
             <td><input type="submit" name="detail" value="{{$item->name}}" class="button"></td>
-        </form>    
+        </form> 
                 <td>{{$item->price}}</td>
                 <td>{{$item->detail}}</td>
                 <td>{{$item->point}}</td>

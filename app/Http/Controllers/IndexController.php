@@ -128,8 +128,11 @@ class IndexController extends Controller
     public function detail(Request $request){
         $user = Auth::user();
         $param = ['detail'=>$request->detail];
+        $para1 = ['username'=>$user->name,'detail'=>$request->detail];
         $item = DB::select('select * from prodetail where name = :detail',$param);
         $items1 = DB::select('select * from review where productName = :detail',$param);
+        //閲覧履歴の追加
+        DB::insert('insert into view_history (username,productname) values (:username,:detail)',$para1);
         return view('product.detail',['item'=>$item[0],'user'=>$user,'items1'=>$items1]);
     }
 
