@@ -24,6 +24,8 @@ class IndexController extends Controller
             'price'=>$request->price,
             'detail'=>$request->detail,
         ];
+        $para1 = ['name'=>$request->name];
+        DB::insert('insert into host_selling (productname,salecount) values (:name,0)',$para1);
         DB::insert('insert into product (name,price,detail,point) values (:name,:price,:detail,:price*0.01)',$param);
         return redirect('/product');
     }
@@ -65,7 +67,7 @@ class IndexController extends Controller
             $msg = '30%OFFセール中！！';
         }else{
             $items = DB::select('select * from product');
-             $msg = 'Welcome to EC!!';
+            $msg = 'Welcome to EC!!';
         }
         $param = ['items'=>$items,'user'=>$user,'msg'=>$msg];
         return view('product.shop',$param);

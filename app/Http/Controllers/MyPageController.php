@@ -64,10 +64,16 @@ class MyPageController extends Controller
         $para3 = [
             'productname'=>$request->productname,
             'price'=>$request->price,
-        ];    
+        ];   
+        $para4 = ['productname'=>$request->productname];
+        //basketを空にする
         DB::delete('delete from basket where username = :username',$para1);
+        //ポイントを加算する
         DB::update('update point set name=:username,point=:point + point where name=:username',$para2);
+        //売り上げ集計を更新する
         DB::insert('insert into sales (productname,price) values (:productname,:price)',$para3);
+        //売れ筋の個数を追加する
+        DB::update('update host_selling set productname=:productname,salecount = salecount + 1 where productname=:productname',$para4);
         return view('Mypage.thanks',['user'=>$user]);
     }
 }

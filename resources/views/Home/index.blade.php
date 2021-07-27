@@ -24,4 +24,21 @@
     <p>ログインして便利な機能を使おう！！</p>
     <a href="/user/auth"><button class="button">ログイン・新規作成する</button></a>
 </div>  
+<div class="indent">
+    <h3>売れ筋ランキング</h3>
+    <table>
+    <tr><th>productName</th><th>price</th><th>detail</th><th>point</th></tr>
+    @foreach($items as $item)
+    <tr>
+        <form action="/product/detail" method = "post">
+        @csrf  
+            <td><input type="submit" name="detail" value="{{$item->name}}" class="button"></td>
+        </form>    
+                <td>{{$item->price}}</td>
+                <td>{{$item->detail}}</td>
+                <td>{{$item->point}}</td>
+    </tr>    
+    @endforeach    
+    </table>
+</div>
 @endsection
