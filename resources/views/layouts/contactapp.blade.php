@@ -17,27 +17,8 @@
         font-size:12pt;
     }
 
-    .user{
-        background-color:#787A91;
-        color:white;
-        padding:10px;
-    }
-
-    .user a{
-        color:black;
-    }
-
     .content{
         margin:10px;
-    }
-
-    .main{
-        background-color:#EEEEEE;
-        padding:30px;
-    }
-
-    .msg{
-        color:red;
     }
 
     th{
@@ -51,6 +32,7 @@
         color:#999;
         padding:5px 10px;
     }
+
 
     .button{
         display: inline-block;
@@ -71,6 +53,22 @@
         background-size: 10px 10px;
         cursor: pointer;
     }
+
+    .indent{
+        display:inline-block;
+        margin-left:5%;
+    }
+
+    .form{
+        background-color:#EEEEEE;
+        padding:30px;
+        text-align:center;
+    }
+
+    .form p{
+        margin:3%;
+    }
+
     </style>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">

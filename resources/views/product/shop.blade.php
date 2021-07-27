@@ -9,7 +9,7 @@
 <p class ="user">USER:{{$user->name.'('.$user->email.')'}}<a href="/mypage"><button class="button">マイページへ</button></a></p>
 <hr>
 @else
-<p>※ログインしていません。(<a href="/login">ログイン</a> | <a href="/register">登録</a>)</p>
+<p>※ログインしていません。(<a href="/user/auth">ログイン</a> | <a href="/register">登録</a>)</p>
 @endif
     <p>商品名検索</p>
     <form action="/product/search" method = "post">

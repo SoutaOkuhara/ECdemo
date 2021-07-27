@@ -108,6 +108,7 @@
     <ul>
         <li>@show</li>
     </ul>
+    <hr>
     <div class = "content">
     @yield('content')
     </div>

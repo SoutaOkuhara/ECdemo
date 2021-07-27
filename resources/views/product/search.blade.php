@@ -1,4 +1,4 @@
-@extends("layouts.shopapp")
+@extends("layouts.mypageapp")
 @section("title",'Search')
 @section('menubar')
     @parent
@@ -11,6 +11,7 @@
 @else
 <p>※ログインしていません。(<a href="/login">ログイン</a> | <a href="/register">登録</a>)</p>
 @endif
+<div class="main">
 <p>{{$msg}}</p>
 <table>
      <tr><th>productName</th><th>price</th><th>detail</th><th>point</th></tr>
@@ -45,5 +46,6 @@
         </tr>    
     @endforeach    
     </table>
-    <a href="/product/shop">ショップページへ戻る</a>
+</div>
+    <a href="/product/shop" class="button">ショップページへ戻る</a>
 @endsection

@@ -1,4 +1,4 @@
-@extends("layouts.shopapp")
+@extends("layouts.mypageapp")
 @section("title",'product')
 @section('menubar')
     @parent
@@ -11,7 +11,8 @@
 @else
 <p>※ログインしていません。(<a href="/login">ログイン</a> | <a href="/register">登録</a>)</p>
 @endif
-    <table>
+<div class="main">
+<table>
      <tr><th>productName</th><th>price</th><th>detail</th><th>point</th></tr>
      @foreach($items as $item)
         <tr>
@@ -37,6 +38,7 @@
         </tr>
     @endforeach    
     </table>
+</div>
     <p><a href="/product/add" class="button">商品追加</a></p>
     <p><a href="/product/sales" class="button">売り上げ集計</a></p>
 @endsection

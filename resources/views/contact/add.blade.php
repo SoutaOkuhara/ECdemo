@@ -1,5 +1,5 @@
-@extends("layouts.detailapp")
-@section("title",'contactAdd')
+@extends("layouts.contactapp")
+@section("title",'ContactAdd')
 @section('menubar')
     @parent
     お問い合わせページ

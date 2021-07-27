@@ -1,4 +1,4 @@
-@extends("layouts.detailapp")
+@extends("layouts.mypageapp")
 @section("title",'BasketPage')
 @section('menubar')
     @parent
@@ -7,10 +7,11 @@
 
 @section('content')
 @if(Auth::check())
-<p>USER:{{$user->name.'('.$user->email.')'}}</p>
+<p class="user">USER:{{$user->name.'('.$user->email.')'}}</p>
 @else
 <p>※ログインしていません。(<a href="/login">ログイン</a> | <a href="/register">登録</a>)</p>
 @endif
+<div class="main">
 <table>
      <tr><th>productName</th><th>price</th><th>point</th></tr>
      @foreach($items as $item)   
@@ -30,6 +31,7 @@
     @foreach($point as $point)
         <p>獲得ポイント：{{$point->addpoint}}</p>
     @endforeach
+</div>
     <form action="/mypage/buy" method = 'post'>
         @csrf
         <input type="submit" value="購入を確定する" class="button">

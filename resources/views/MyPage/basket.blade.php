@@ -1,4 +1,4 @@
-@extends("layouts.detailapp")
+@extends("layouts.mypageapp")
 @section("title",'BasketPage')
 @section('menubar')
     @parent
@@ -11,7 +11,9 @@
 @else
 <p>※ログインしていません。(<a href="/login">ログイン</a> | <a href="/register">登録</a>)</p>
 @endif
-<p><a href="/product/shop">ショップページに移動する</a></p>
+<hr>
+<p><a href="/product/shop" class="button">ショップページに移動する</a></p>
+<div class="main">
 <p>カート一覧</p>
 <table>
      <tr><th>productName</th><th>price</th><th>detail</th><th>point</th></tr>
@@ -38,8 +40,10 @@
         </tr>    
     @endforeach    
     </table>
+    <hr>
     @foreach($sum as $sum)
     <p>合計金額：{{$sum->addprice}}円</p>
     @endforeach
+</div>
     <a href="/mypage/buy"><button class="button">購入ページへ</button></a>
 @endsection

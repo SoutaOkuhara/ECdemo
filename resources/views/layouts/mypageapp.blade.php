@@ -31,15 +31,6 @@
         margin:10px;
     }
 
-    .main{
-        background-color:#EEEEEE;
-        padding:30px;
-    }
-
-    .msg{
-        color:red;
-    }
-
     th{
         background-color:#999;
         color:#fff;
@@ -51,6 +42,7 @@
         color:#999;
         padding:5px 10px;
     }
+
 
     .button{
         display: inline-block;
@@ -71,6 +63,15 @@
         background-size: 10px 10px;
         cursor: pointer;
     }
+
+
+    .main{
+        background-color:#EEEEEE;
+        padding:30px;
+        margin:3% 0;
+    }
+
+
     </style>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">

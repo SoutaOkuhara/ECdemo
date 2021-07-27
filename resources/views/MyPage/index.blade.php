@@ -1,4 +1,4 @@
-@extends("layouts.detailapp")
+@extends("layouts.mypageapp")
 @section("title",'MyPage')
 @section('menubar')
     @parent
@@ -19,6 +19,7 @@
 @else
 <p>※ログインしていません。(<a href="/login">ログイン</a> | <a href="/register">登録</a>)</p>
 @endif
+<div class="main">
 <p>お気に入り商品一覧</p>
 <table>
      <tr><th>productName</th><th>price</th><th>detail</th><th>point</th></tr>
@@ -84,6 +85,7 @@
         </tr>    
     @endforeach    
     </table>
-    <p><a href="/product/shop">ショップページに戻る</a></p>
-    <p><a href="/mypage/basket">カートページに移動する</a></p>
+</div>
+    <p><a href="/product/shop" class="button">ショップページに戻る</a></p>
+    <p><a href="/mypage/basket" class="button">カートページに移動する</a></p>
 @endsection

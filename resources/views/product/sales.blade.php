@@ -20,6 +20,7 @@
         </tr>    
     @endforeach    
     </table>
+    <hr>
     @foreach($sum as $sum)
     <p>合計売上金：{{$sum->allprice}}円</p>
     @endforeach

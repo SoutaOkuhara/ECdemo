@@ -30,7 +30,7 @@ Route::post('product/search','IndexController@search');
 Route::post('product/fav','IndexController@fav');
 Route::get('product/detailadd','IndexController@detailaddget')->middleware("auth");
 Route::post('product/detailadd','IndexController@detailaddpost');
-Route::post('product/detail','IndexController@detail');
+Route::post('product/detail','IndexController@detail')->middleware("auth");
 Route::get('product/sales','IndexController@sales')->middleware("auth");
 
 
