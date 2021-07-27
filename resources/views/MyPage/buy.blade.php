@@ -1,8 +1,8 @@
-@extends("layouts.indexapp")
+@extends("layouts.detailapp")
 @section("title",'BasketPage')
 @section('menubar')
     @parent
-    カートページ
+    購入確定ページ
 @endsection
 
 @section('content')
@@ -11,7 +11,6 @@
 @else
 <p>※ログインしていません。(<a href="/login">ログイン</a> | <a href="/register">登録</a>)</p>
 @endif
-<p>購入ページ</p>
 <table>
      <tr><th>productName</th><th>price</th><th>point</th></tr>
      @foreach($items as $item)   
@@ -32,7 +31,7 @@
     <p>獲得ポイント：{{$point->addpoint}}</p>
     <form action="/mypage/buy" method = 'post'>
         @csrf
-            <input type="submit" value="購入を確定する">
+            <input type="submit" value="購入を確定する" class="button">
             <input type="hidden" name = "point" value="{{$point->addpoint}}">
             <input type="hidden" name = "productname" value="{{$item->name}}">
             <input type="hidden" name = "price" value="{{$item->price}}">

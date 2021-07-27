@@ -1,5 +1,5 @@
-@extends("layouts.indexapp")
-@section("title",'product.reviw')
+@extends("layouts.detailapp")
+@section("title",'productReviw')
 @section('menubar')
     @parent
     商品レビューページ
@@ -7,7 +7,7 @@
 
 @section('content')
 @if(Auth::check())
-<p>USER:{{$user->name.'('.$user->email.')'}}</p>
+<p class="user">USER:{{$user->name.'('.$user->email.')'}}</p>
 @else
 <p>※ログインしていません。(<a href="/login">ログイン</a> | <a href="/register">登録</a>)</p>
 @endif
@@ -36,7 +36,7 @@
             <p>Name:<input type="text" name = "name"></p>
             <p>星:(1~5で回答)<input type="text" name = "star"></p>
             <p>本文:<input type="text" name = "detail"></p>
-            <p><input type="submit" value="send"></p>
+            <p><input type="submit" value="send" class="button"></p>
             <input type="hidden" name="productName" value="{{$item->name}}">
     </form>
 @endsection

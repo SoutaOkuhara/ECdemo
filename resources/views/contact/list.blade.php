@@ -1,4 +1,4 @@
-@extends("layouts.contactapp")
+@extends("layouts.detailapp")
 @section("title",'ContactList')
 @section('menubar')
     @parent
@@ -7,7 +7,7 @@
 
 @section('content')
 @if(Auth::check())
-<p>USER:{{$user->name.'('.$user->email.')'}}</p>
+<p class="user">USER:{{$user->name.'('.$user->email.')'}}</p>
 @else
 <p>※ログインしていません。(<a href="/login">ログイン</a> | <a href="/register">登録</a>)</p>
 @endif

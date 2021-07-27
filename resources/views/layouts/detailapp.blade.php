@@ -36,10 +36,6 @@
         padding:30px;
     }
 
-    .msg{
-        color:red;
-    }
-
     th{
         background-color:#999;
         color:#fff;
@@ -50,6 +46,22 @@
         border:solid 1px #aaa;
         color:#999;
         padding:5px 10px;
+    }
+
+    table{
+        margin:3% 0;
+    }
+
+    .detail{
+        font-size:20px;
+        margin:5%;
+        float:left;
+    }
+
+    img{
+        width:50%;
+        height:50%;
+        margin-bottom:5%;
     }
 
     .button{

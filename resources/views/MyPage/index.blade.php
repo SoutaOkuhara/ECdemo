@@ -1,4 +1,4 @@
-@extends("layouts.indexapp")
+@extends("layouts.detailapp")
 @section("title",'MyPage')
 @section('menubar')
     @parent
@@ -7,12 +7,14 @@
 
 @section('content')
 @if(Auth::check())
-<p>USER:{{$user->name.'('.$user->email.')'}}</p>
-@foreach($point as $point)
-    <p>保有ポイント:{{$point->point}}</p>
-@endforeach
+<p class="user">
+    USER:{{$user->name.'('.$user->email.')'}}<br>
+    @foreach($point as $point)
+    保有ポイント:{{$point->point}}
+    @endforeach
+</p>
 <form action="/user/logout">
-    <input type="submit" value = "LogOut">
+    <input type="submit" value = "LogOut" class="button">
 </form>
 @else
 <p>※ログインしていません。(<a href="/login">ログイン</a> | <a href="/register">登録</a>)</p>
@@ -28,18 +30,18 @@
             <td>{{$item->price}}</td>
             <td>{{$item->detail}}</td>
             <td>{{$item->point}}</td>
-            <td><input type="submit" value ='カートに追加' name="buy"></td>
+            <td><input type="submit" value ='カートに追加' name="buy" class="button"></td>
             <td><input type="hidden" name="buy" value="{{$item->name}}"></td>
             <input type="hidden" name="username" value="{{$user->name}}">
     </form>   
         <form action="/review" method='post'>
         @csrf 
-            <td><input type="submit" value = "レビューへ移動"><td>
+            <td><input type="submit" value = "レビューへ移動" class="button"><td>
             <input type="hidden" name="name" value ="{{$item->name}}">
         </form>
         <form action="/mypage" method = 'post'>
         @csrf
-            <td><input type="submit" value="お気に入りから削除"></td>
+            <td><input type="submit" value="お気に入りから削除" class="button"></td>
             <input type="hidden" name = "productname" value="{{$item->name}}">
             <input type="hidden" name="username" value="{{$user->name}}">
         </form>

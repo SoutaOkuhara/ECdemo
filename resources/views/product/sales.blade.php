@@ -1,17 +1,16 @@
-@extends("layouts.indexapp")
+@extends("layouts.detailapp")
 @section("title",'Sales')
 @section('menubar')
     @parent
-    カートページ
+    売り上げ集計ページ
 @endsection
 
 @section('content')
 @if(Auth::check())
-<p>USER:{{$user->name.'('.$user->email.')'}}</p>
+<p class="user">USER:{{$user->name.'('.$user->email.')'}}</p>
 @else
 <p>※ログインしていません。(<a href="/login">ログイン</a> | <a href="/register">登録</a>)</p>
 @endif
-<p>売り上げ集計ページ</p>
 <table>
      <tr><th>productName</th><th>price</th></tr>
      @foreach($items as $item)   

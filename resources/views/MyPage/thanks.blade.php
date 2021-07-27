@@ -1,8 +1,8 @@
-@extends("layouts.indexapp")
+@extends("layouts.detailapp")
 @section("title",'Thanks for Buy!!')
 @section('menubar')
     @parent
-    カートページ
+    購入完了
 @endsection
 
 @section('content')

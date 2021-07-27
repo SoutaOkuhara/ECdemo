@@ -1,4 +1,4 @@
-@extends("layouts.indexapp")
+@extends("layouts.detailapp")
 @section("title",'user')
 @section('menubar')
     @parent
@@ -7,7 +7,7 @@
 
 @section('content')
 @if(Auth::check())
-<p>USER:{{$user->name.'('.$user->email.')'}}</p>
+<p class="user">USER:{{$user->name.'('.$user->email.')'}}</p>
 <a href="/user/auth">別のユーザーでログインする</a>
 @else
 <p>※ログインしていません。(<a href="/login">ログイン</a> | <a href="/register">登録</a>)</p>

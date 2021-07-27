@@ -1,6 +1,9 @@
 @extends("layouts.shopapp")
 @section("title",'shop')
-
+@section('menubar')
+    @parent
+    ショップページ
+@endsection
 @section('content')
 @if(Auth::check())
 <p class ="user">USER:{{$user->name.'('.$user->email.')'}}<a href="/mypage">マイページへ</a></p>

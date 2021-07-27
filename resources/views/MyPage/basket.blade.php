@@ -1,4 +1,4 @@
-@extends("layouts.indexapp")
+@extends("layouts.detailapp")
 @section("title",'BasketPage')
 @section('menubar')
     @parent
@@ -8,9 +8,11 @@
 @section('content')
 @if(Auth::check())
 <p>USER:{{$user->name.'('.$user->email.')'}}</p>
+<p><a href="/mypage">マイページに移動する</a></p>
 @else
 <p>※ログインしていません。(<a href="/login">ログイン</a> | <a href="/register">登録</a>)</p>
 @endif
+<p><a href="/product/shop">ショップページに移動する</a></p>
 <p>カート一覧</p>
 <table>
      <tr><th>productName</th><th>price</th><th>detail</th><th>point</th></tr>
@@ -40,7 +42,5 @@
     @foreach($sum as $sum)
     <p>合計金額：{{$sum->addprice}}円</p>
     @endforeach
-    <a href="/mypage/buy"><button>購入ページへ</button></a>
-    <p><a href="/product/shop">ショップページに移動する</a></p>
-    <p><a href="/mypage">マイページに移動する</a></p>
+    <a href="/mypage/buy"><button class="button">購入ページへ</button></a>
 @endsection

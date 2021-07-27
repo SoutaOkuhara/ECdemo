@@ -1,4 +1,4 @@
-@extends("layouts.contactapp")
+@extends("layouts.detailapp")
 @section("title",'contactAdd')
 @section('menubar')
     @parent
