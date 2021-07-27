@@ -31,11 +31,6 @@
         margin:10px;
     }
 
-    .main{
-        background-color:#EEEEEE;
-        padding:30px;
-    }
-
     th{
         background-color:#999;
         color:#fff;
@@ -46,10 +41,6 @@
         border:solid 1px #aaa;
         color:#999;
         padding:5px 10px;
-    }
-
-    table{
-        margin:3% 0;
     }
 
     .detail{
@@ -82,6 +73,29 @@
         );
         background-size: 10px 10px;
         cursor: pointer;
+    }
+
+    .indent{
+        background-color:#EEEEEE;
+        padding:5%;
+        margin:5% 1%;
+        float:left;
+        text-align:center;
+    }
+
+    h2{
+        text-align:center;
+        color:#141E61;
+    }
+
+    .contents{
+        margin:0 auto;
+    }
+
+    .rank{
+        clear:both;
+        background-color:#EEEEEE;
+        padding:5%;
     }
 
     </style>

@@ -29,9 +29,14 @@
                 <td><input type="submit" value="編集" class = "button"></td>
                 <input type="hidden" name="id" value="{{$item->id}}">
             </form>
+            <form action="/product/detail" method = "post">
+                @csrf  
+                <td><input type="submit" value="詳細へ" class="button"></td>
+            <input type="hidden" name="detail" value="{{$item->name}}">
+            </form> 
         </tr>
     @endforeach    
     </table>
-    <p><a href="/product/add">商品追加</a></p>
-    <p><a href="/product/sales">売り上げ集計</a></p>
+    <p><a href="/product/add" class="button">商品追加</a></p>
+    <p><a href="/product/sales" class="button">売り上げ集計</a></p>
 @endsection
