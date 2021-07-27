@@ -83,6 +83,19 @@
         background-size: 10px 10px;
         cursor: pointer;
     }
+
+    .indent{
+        text-align:center;
+        margin:3%;
+        padding:3% 0;
+        background-color:#EEEEEE;
+    }
+
+    h2{
+        text-align:center;
+        color:#141E61;
+    }
+
     </style>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">

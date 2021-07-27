@@ -48,7 +48,7 @@ Route::post('company/del','CompanyController@remove');
 Route::get('company/edit','CompanyController@edit');
 Route::post('company/edit','CompanyController@update');
 
-Route::get('contact/list','ContactController@index')->middleware("auth");
+Route::get('contact/list','ContactController@index');
 Route::get('contact','ContactController@add');
 Route::post('contact','ContactController@create');
 Route::get('contact/anslist','ContactController@answerlist')->middleware("auth");
@@ -66,6 +66,8 @@ Route::get('mypage/basket','MyPageController@basket')->middleware("auth");
 Route::post('mypage/basket','MyPageController@basketdel');
 Route::get('mypage/buy','MyPageController@buy')->middleware("auth");
 Route::post('mypage/buy','MyPageController@thanks');
+
+Route::get('index','MenuController@index');
 
 Auth::routes();
 

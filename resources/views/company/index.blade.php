@@ -7,7 +7,7 @@
 
 @section('content')
 @if(Auth::check())
-<p class="user">USER:{{$user->name.'('.$user->email.')'}}</p>
+<p class="user">USER:{{$user->name.'('.$user->email.')'}}<a href="/mypage"><button class="button">マイページへ</button></a></p>
 @else
 <p>※ログインしていません。(<a href="/login">ログイン</a> | <a href="/register">登録</a>)</p>
 @endif

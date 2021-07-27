@@ -1,5 +1,5 @@
 @extends("layouts.detailapp")
-@section("title",'userLogin')
+@section("title",'UserLogin')
 @section('menubar')
     @parent
     ユーザー認証ページ
@@ -7,7 +7,7 @@
 
 @section('content')
 <p>{{$message}}</p>
-<p><a href="/register">アカウントを新規作成する</a></p>
+<a href="/register"><button class="button">アカウントを新規作成する</button></a>
 <form action="/user/auth" method="post">
     <table>
         @csrf

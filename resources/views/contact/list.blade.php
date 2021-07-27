@@ -6,12 +6,7 @@
 @endsection
 
 @section('content')
-@if(Auth::check())
-<p class="user">USER:{{$user->name.'('.$user->email.')'}}</p>
-@else
-<p>※ログインしていません。(<a href="/login">ログイン</a> | <a href="/register">登録</a>)</p>
-@endif
-<p><a href="/contact">お問い合わせをする</a></p>
+<a href="/contact"><button class="button">お問い合わせをする</button></a>
 <p>質問テーブル</p>
     <table>
      <tr><th>name</th><th>content</th></tr>

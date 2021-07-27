@@ -6,7 +6,7 @@
 @endsection
 @section('content')
 @if(Auth::check())
-<p class ="user">USER:{{$user->name.'('.$user->email.')'}}<a href="/mypage">マイページへ</a></p>
+<p class ="user">USER:{{$user->name.'('.$user->email.')'}}<a href="/mypage"><button class="button">マイページへ</button></a></p>
 <hr>
 @else
 <p>※ログインしていません。(<a href="/login">ログイン</a> | <a href="/register">登録</a>)</p>
@@ -18,7 +18,7 @@
                 <td><input type="text" name="searchName"></td>
                 <td><input type="submit" value ='検索' name="search" class="button"></td>
     </form>  
-    <p><a href="/contact/list">お問い合わせ一覧ページへ</a></p>
+    <a href="/contact/list"><button class="button">お問い合わせ一覧ページへ</button></a>
 
     <div class = "main">
         <h3>商品一覧</h3>
