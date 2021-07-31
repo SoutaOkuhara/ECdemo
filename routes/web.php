@@ -80,6 +80,8 @@ Route::get('timeline/comment','TimelineController@comment')->middleware("auth");
 Route::post('timeline/comment','TimelineController@commentpost')->middleware("auth");
 Route::get('timeline/good','TimelineController@good');
 Route::get('timeline/bad','TimelineController@bad');
+Route::get('timeline/comment/good','TimelineController@goodcomment');
+Route::get('timeline/comment/bad','TimelineController@badcomment');
 
 Route::get('index','MenuController@index');
 

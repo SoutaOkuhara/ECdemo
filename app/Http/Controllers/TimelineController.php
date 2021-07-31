@@ -71,4 +71,36 @@ class TimelineController extends Controller
         DB::update('update timeline set bad = bad + 1  where productname=:productname',$para1);
         return redirect('/timeline');
     }
+
+    public function goodcomment(Request $request){
+        $user = Auth::user();
+        $para1 = [
+            'productname'=>$request->productname,
+            'username'=>$request->username,
+            'comment'=>$request->comment,
+        ];
+        $para2 = [
+            'productname'=>$request->productname,
+        ];
+        DB::update('update TLcomment set good = good + 1  where productname=:productname and name=:username and comment=:comment',$para1);
+        $item = DB::select('select * from prodetail where name = :productname',$para2);
+        $items1 = DB::select('select * from TLcomment where productname = :productname',$para2);
+        return view('timeline.TLcomment',['item'=>$item[0],'user'=>$user,'items1'=>$items1]);
+    }
+
+    public function badcomment(Request $request){
+        $user = Auth::user();
+        $para1 = [
+            'productname'=>$request->productname,
+            'username'=>$request->username,
+            'comment'=>$request->comment,
+        ];
+        $para2 = [
+            'productname'=>$request->productname,
+        ];
+        DB::update('update TLcomment set bad = bad + 1  where productname=:productname and name=:username and comment=:comment',$para1);
+        $item = DB::select('select * from prodetail where name = :productname',$para2);
+        $items1 = DB::select('select * from TLcomment where productname = :productname',$para2);
+        return view('timeline.TLcomment',['item'=>$item[0],'user'=>$user,'items1'=>$items1]);
+    }
 }

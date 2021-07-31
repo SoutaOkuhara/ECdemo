@@ -18,11 +18,11 @@
         <p>グッド数:{{$item->good}}</p>
         <p>バッド数:{{$item->bad}}</p>
         <form action="/timeline/good">
-            <input type="submit" name="good" value="good" class="button">
+            <input type="submit" value="good" class="button">
             <input type="hidden" name="productname" value="{{$item->productname}}">
         </form>    
         <form action="/timeline/bad">
-            <input type="submit" name="bad" value="bad" class="button">
+            <input type="submit" value="bad" class="button">
             <input type="hidden" name="productname" value="{{$item->productname}}">
         </form>    
         <form action="/timeline/comment">

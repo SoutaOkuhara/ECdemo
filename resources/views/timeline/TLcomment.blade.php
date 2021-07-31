@@ -25,6 +25,20 @@
     @foreach($items1 as $item1)
         <p>名前：{{$item1->name}}</p>
         <p>{{$item1->comment}}</p>
+        <p>グッド数:{{$item1->good}}</p>
+        <p>バッド数:{{$item1->bad}}</p>
+        <form action="/timeline/comment/good">
+            <input type="submit" value="good" class="button">
+            <input type="hidden" name="productname" value="{{$item->name}}">
+            <input type="hidden" name="username" value="{{$item1->name}}">
+            <input type="hidden" name="comment" value="{{$item1->comment}}">
+        </form>    
+        <form action="/timeline/comment/bad">
+            <input type="submit" value="bad" class="button">
+            <input type="hidden" name="productname" value="{{$item->name}}">
+            <input type="hidden" name="username" value="{{$item1->name}}">
+            <input type="hidden" name="comment" value="{{$item1->comment}}">
+        </form>  
         <hr>
     @endforeach
     </div>
