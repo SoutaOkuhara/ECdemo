@@ -86,4 +86,56 @@ class MyPageController extends Controller
         DB::delete('delete from view_history where productname = :productname and username = :username',$param);
         return redirect('/mypage');
     }
+
+    public function chat(Request $request){
+        $user = Auth::user();
+        $para1 = ['username'=>$user->name];
+        //ユーザー側表示
+        $items = DB::select('select * from chat where name = :username',$para1);
+        $param = ['items'=>$items,'user'=>$user];
+        return view('/mypage.chat',$param);
+    }
+
+    public function chatpost(Request $request){
+        $param = [
+            'username'=>$request->username,
+            'quesres'=>$request->quesres,
+            'content'=>$request->content,
+        ];
+        DB::insert('insert into chat (name,content,quesres) values (:username,:content,:quesres)',$param);
+        return redirect('/mypage/chat');
+    }
+
+    public function chatUser(Request $request){
+        $user = Auth::user();
+        $items = DB::select('select * from users');
+        $param = ['items'=>$items,'user'=>$user];
+        return view('/mypage.user',$param);
+    }
+
+    public function chatAdmin(Request $request){
+        $user = Auth::user();
+        $para1 = [
+            'username'=>$request->username,
+        ];
+        $items = DB::select('select * from chat where name = :username',$para1);
+        $param = ['items'=>$items,'user'=>$user];
+        return view('/mypage.chatAdmin',$param);
+    }
+
+    public function chatAdminpost(Request $request){
+        $user = Auth::user();
+        $param = [
+            'username'=>$request->username,
+            'quesres'=>$request->quesres,
+            'content'=>$request->content,
+        ];
+        DB::insert('insert into chat (name,content,quesres) values (:username,:content,:quesres)',$param);
+        $para1 = [
+            'username'=>$request->username,
+        ];
+        $items = DB::select('select * from chat where name = :username',$para1);
+        $param1 = ['items'=>$items,'user'=>$user];
+        return view('/mypage.chatAdmin',$param1);
+    }
 }

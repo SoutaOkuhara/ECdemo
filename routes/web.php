@@ -67,6 +67,11 @@ Route::post('mypage/basket','MyPageController@basketdel');
 Route::get('mypage/buy','MyPageController@buy')->middleware("auth");
 Route::post('mypage/buy','MyPageController@thanks');
 Route::post('mypage/view/del','MyPageController@viewDel');
+Route::get('mypage/chat','MyPageController@chat')->middleware("auth");
+Route::post('mypage/chat','MyPageController@chatpost');
+Route::get('mypage/chatUser','MyPageController@chatUser')->middleware("auth");
+Route::get('mypage/chatAdmin','MyPageController@chatAdmin')->middleware("auth");
+Route::post('mypage/chatAdmin','MyPageController@chatAdminpost')->middleware("auth");
 
 Route::get('index','MenuController@index');
 
