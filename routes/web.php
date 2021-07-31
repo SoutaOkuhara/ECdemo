@@ -73,6 +73,14 @@ Route::get('mypage/chatUser','MyPageController@chatUser')->middleware("auth");
 Route::get('mypage/chatAdmin','MyPageController@chatAdmin')->middleware("auth");
 Route::post('mypage/chatAdmin','MyPageController@chatAdminpost')->middleware("auth");
 
+Route::get('timeline','TimelineController@index');
+Route::get('timeline/add','TimelineController@add')->middleware("auth");
+Route::post('timeline/add','TimelineController@create');
+Route::get('timeline/comment','TimelineController@comment')->middleware("auth");
+Route::post('timeline/comment','TimelineController@commentpost')->middleware("auth");
+Route::get('timeline/good','TimelineController@good');
+Route::get('timeline/bad','TimelineController@bad');
+
 Route::get('index','MenuController@index');
 
 Auth::routes();
