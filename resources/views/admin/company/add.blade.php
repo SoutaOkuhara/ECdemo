@@ -1,3 +1,7 @@
+<head>
+    <link href="{{ asset('/css/admin.css') }}" rel="stylesheet">
+</head>
+
 @extends("layouts.detailapp")
 @section("title",'CompanyAdd')
 @section('menubar')

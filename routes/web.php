@@ -75,6 +75,8 @@ Route::group(['prefix' => 'timeline'], function () {
 
 // 管理者側
 
+//管理者側topページ
+Route::get('/admin','admin\AdminController@index')->middleware("auth");
 
 //管理者側商品
 Route::group(['prefix' => 'admin/product'], function () {
@@ -92,13 +94,13 @@ Route::group(['prefix' => 'admin/product'], function () {
 
 //管理者側運営会社
 Route::group(['prefix' => 'admin/company'], function () {
-    Route::get('/','CompanyController@index')->middleware("auth");
-    Route::get('/add','CompanyController@add')->middleware("auth");
-    Route::post('/add','CompanyController@create');
-    Route::get('/del','CompanyController@del')->middleware("auth");
-    Route::post('/del','CompanyController@remove');
-    Route::get('/edit','CompanyController@edit')->middleware("auth");
-    Route::post('/edit','CompanyController@update');
+    Route::get('/','admin\CompanyController@index')->middleware("auth");
+    Route::get('/add','admin\CompanyController@add')->middleware("auth");
+    Route::post('/add','admin\CompanyController@create');
+    Route::get('/del','admin\CompanyController@del')->middleware("auth");
+    Route::post('/del','admin\CompanyController@remove');
+    Route::get('/edit','admin\CompanyController@edit')->middleware("auth");
+    Route::post('/edit','admin\CompanyController@update');
 });
 
 //管理者側お問い合わせ
@@ -117,6 +119,7 @@ Route::group(['prefix' => 'admin/mypage'], function () {
 
 //管理者側タイムライン
 Route::group(['prefix' => 'admin/timeline'], function () {
+    Route::get('/','TimelineController@index');
     Route::get('/add','TimelineController@add')->middleware("auth");
     Route::post('/add','TimelineController@create');
 });

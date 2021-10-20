@@ -35,14 +35,14 @@ class ContactController extends Controller
         $user = Auth::user();
         $items = DB::select('select * from contact');
         $param = ['items'=>$items,'user'=>$user];
-        return view('contact.anslist',$param);
+        return view('admin.contact.anslist',$param);
     }
 
     public function ansget(Request $request){
         $param = ['id'=>$request->id];
         $item = DB::select('select * from contact where id = :id',$param);
         $item1 = DB::select('select * from contact where id = :id',$param);
-        return view('contact.ans',['item'=>$item[0],'form'=>$item1[0]]);
+        return view('admin.contact.ans',['item'=>$item[0],'form'=>$item1[0]]);
     }
 
     public function anspost(Request $request){

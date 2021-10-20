@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -12,11 +13,11 @@ class CompanyController extends Controller
         $user = Auth::user();
         $items = DB::select('select * from company');
         $param = ['items'=>$items,'user'=>$user];
-        return view('company.index',$param);
+        return view('admin.company.index',$param);
     }
 
     public function add(Request $request){
-        return view('company.add');
+        return view('admin.company.add');
     }
 
     public function create(Request $request){
@@ -31,7 +32,7 @@ class CompanyController extends Controller
     public function del(Request $request){
         $param = ['id'=>$request->id];
         $item = DB::select('select * from company where id = :id',$param);
-        return view('company.del',['form'=>$item[0]]);
+        return view('admin.company.del',['form'=>$item[0]]);
     }
 
     public function remove(Request $request){
@@ -43,7 +44,7 @@ class CompanyController extends Controller
     public function edit(Request $request){
         $param = ['id'=>$request->id];
         $item = DB::select('select * from company where id = :id',$param);
-        return view('company.edit',['form'=>$item[0]]);
+        return view('admin.company.edit',['form'=>$item[0]]);
     }
 
     public function update(Request $request){
