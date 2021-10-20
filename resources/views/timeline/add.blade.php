@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-<form action="/timeline/add" method = "post">
+<form action="/admin/timeline/add" method = "post">
 <table>
     @csrf
     <tr><th>会社名:</th><td><input type="text" name = "name"></td></tr>

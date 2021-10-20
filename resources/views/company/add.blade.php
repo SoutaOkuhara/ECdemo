@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-<form action="/company/add" method = "post">
+<form action="/admin/company/add" method = "post">
 <table>
     @csrf
     <tr><th>Name:</th><td><input type="text" name = "name"></td></tr>

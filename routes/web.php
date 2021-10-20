@@ -103,7 +103,7 @@ Route::group(['prefix' => 'admin/company'], function () {
 
 //管理者側お問い合わせ
 Route::group(['prefix' => 'admin/contact'], function () {
-    Route::get('/anslist','ContactController@answerlist')->middleware("auth");
+    Route::get('/','ContactController@answerlist')->middleware("auth");
     Route::get('/ans','ContactController@ansget')->middleware("auth");
     Route::post('/ans','ContactController@anspost');
 });

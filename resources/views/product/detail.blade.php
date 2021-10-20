@@ -11,14 +11,14 @@
 @else
 <p>※ログインしていません。(<a href="/login">ログイン</a> | <a href="/register">登録</a>)</p>
 @endif
-<p><a href="/product/shop">ショップに戻る</a></p>
+<p><a href="/product/">ショップに戻る</a></p>
 <form action="/product/fav" method = "post">
     @csrf
     <input type="submit" value = "お気に入りに登録" class="button">  
     <input type="hidden" name = "favName" value = "{{$user->name}}"> 
     <input type="hidden" name = "favProduct" value = "{{$item->name}}">
 </form>    
-<form action="/product/shop" method = "post">
+<form action="/product/" method = "post">
 @csrf        
     <td><input type="submit" value ='カートに追加' name="buy" class="button"></td>
     <td><input type="hidden" name="buy" value="{{$item->name}}"></td>

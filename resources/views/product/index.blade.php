@@ -39,6 +39,6 @@
     @endforeach    
     </table>
 </div>
-    <p><a href="/product/add" class="button">商品追加</a></p>
-    <p><a href="/product/sales" class="button">売り上げ集計</a></p>
+    <p><a href="/admin/product/add" class="button">商品追加</a></p>
+    <p><a href="/admin/product/sales" class="button">売り上げ集計</a></p>
 @endsection

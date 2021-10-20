@@ -16,7 +16,7 @@
 <table>
      <tr><th>productName</th><th>price</th><th>detail</th><th>point</th></tr>
      @foreach($items as $item)
-    <form action="/product/shop" method = "post">
+    <form action="/product/" method = "post">
     @csrf
         <tr>
             <td>{{$item->name}}</td>

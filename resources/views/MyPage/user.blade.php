@@ -11,7 +11,7 @@
      <tr><th>name</th><th>mail</th></tr>
      @foreach($items as $item)
         <tr>
-        <form action="/mypage/chatAdmin">
+        <form action="/admin/mypage/chatAdmin">
         @csrf
             <td><input type="submit" value="{{$item->name}}" name = "username"></td>
         </form>

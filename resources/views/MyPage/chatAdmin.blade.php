@@ -36,7 +36,7 @@
 
 </div>
 </div>
-    <form action="/mypage/chatAdmin" method = "post">
+    <form action="/admin/mypage/chatAdmin" method = "post">
         @csrf
         <p>Content:<input type="text" name="content"></p>
         <p><input type="hidden" name="username" class="button" value="{{$item->name}}"></p>

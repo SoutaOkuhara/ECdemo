@@ -15,7 +15,7 @@
         <td>{{$item->content}}</td>
     </tr>  
 </table>
-<form action="/contact/ans" method = "post">
+<form action="/admin/contact/ans" method = "post">
 <table>
     @csrf
     <input type="hidden" name = "id" value = "{{$form->id}}">

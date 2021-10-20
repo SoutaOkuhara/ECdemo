@@ -46,7 +46,7 @@
                 <td>{{$item->point}}</td>
 
         @if(Auth::check())
-            <form action="/product/shop" method = "post">
+            <form action="/product/" method = "post">
             @csrf        
                 <td><input type="submit" value ='カートに追加' name="buy" class="button"></td>
                 <td><input type="hidden" name="buy" value="{{$item->name}}"></td>

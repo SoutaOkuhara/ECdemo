@@ -86,7 +86,7 @@
     @endforeach    
     </table>
 </div>
-    <p><a href="/product/shop" class="button">ショップページに戻る</a></p>
+    <p><a href="/product/" class="button">ショップページに戻る</a></p>
     <p><a href="/mypage/basket" class="button">カートページに移動する</a></p>
     <p><a href="/contact/list" class="button">お問い合わせページに移動する</a></p>
     <p><a href="/mypage/chat" class="button">チャットページに移動する</a></p>

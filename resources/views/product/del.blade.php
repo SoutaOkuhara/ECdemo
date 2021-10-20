@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-<form action="/product/del" method = "post">
+<form action="/admin/product/del" method = "post">
 <table>
     @csrf
     <input type="hidden" name = "id" value = "{{$form->id}}">

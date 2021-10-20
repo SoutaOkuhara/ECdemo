@@ -14,7 +14,7 @@
         <td>{{$item->mail}}</td>
         <td>{{$item->phone}}</td>
         <td>{{$item->content}}</td>
-        <form action="/contact/ans">
+        <form action="/admin/contact/ans">
             <td><input type="submit" value="回答する" class = "button"></td>
             <input type="hidden" name="id" value="{{$item->id}}">
         </form>

@@ -25,7 +25,7 @@ class CompanyController extends Controller
             'mail'=>$request->mail,
         ];
         DB::insert('insert into company (name,mail) values (:name,:mail)',$param);
-        return redirect('/company');
+        return redirect('/admin/company');
     }
 
     public function del(Request $request){
@@ -37,7 +37,7 @@ class CompanyController extends Controller
     public function remove(Request $request){
         $param = ['id'=>$request->id];
         DB::delete('delete from company where id = :id',$param);
-        return redirect('/company');
+        return redirect('/admin/company');
     }
 
     public function edit(Request $request){
@@ -53,6 +53,6 @@ class CompanyController extends Controller
             'mail'=>$request->mail,
         ];
         DB::update('update company set name=:name,mail=:mail where id=:id',$param);
-        return redirect('/company');
+        return redirect('/admin/company');
     }
 }

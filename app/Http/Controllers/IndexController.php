@@ -27,7 +27,7 @@ class IndexController extends Controller
         $para1 = ['name'=>$request->name];
         DB::insert('insert into host_selling (productname,salecount) values (:name,0)',$para1);
         DB::insert('insert into product (name,price,detail,point) values (:name,:price,:detail,:price*0.01)',$param);
-        return redirect('/product');
+        return redirect('/admin/product');
     }
 
     public function del(Request $request){
@@ -39,7 +39,7 @@ class IndexController extends Controller
     public function remove(Request $request){
         $param = ['id'=>$request->id];
         DB::delete('delete from product where id = :id',$param);
-        return redirect('/product');
+        return redirect('/admin/product');
     }
 
     public function edit(Request $request){
@@ -56,7 +56,7 @@ class IndexController extends Controller
             'detail'=>$request->detail,
         ];
         DB::update('update product set name=:name,price=:price,detail=:detail where id=:id',$param);
-        return redirect('/product');
+        return redirect('/admin/product');
     }
 
     public function shop(Request $request){

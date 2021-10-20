@@ -12,7 +12,7 @@
 <p>※ログインしていません。(<a href="/login">ログイン</a> | <a href="/register">登録</a>)</p>
 @endif
 <hr>
-<p><a href="/product/shop" class="button">ショップページに移動する</a></p>
+<p><a href="/product" class="button">ショップページに移動する</a></p>
 <div class="main">
 <p>カート一覧</p>
 <table>
