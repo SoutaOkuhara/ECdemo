@@ -1,4 +1,4 @@
-@extends("layouts.detailapp")
+@extends("layouts.timelineapp")
 @section("title",'TLComment')
 @section('menubar')
     @parent
@@ -29,15 +29,13 @@
         <p>バッド数:{{$item1->bad}}</p>
         <form action="/timeline/comment/good">
             <input type="submit" value="good" class="button">
-            <input type="hidden" name="productname" value="{{$item->name}}">
-            <input type="hidden" name="username" value="{{$item1->name}}">
-            <input type="hidden" name="comment" value="{{$item1->comment}}">
+            <input type="hidden" name="userid" value="{{$item1->id}}">
+            <input type="hidden" name="productname" value="{{$item1->productname}}">
         </form>    
         <form action="/timeline/comment/bad">
             <input type="submit" value="bad" class="button">
-            <input type="hidden" name="productname" value="{{$item->name}}">
-            <input type="hidden" name="username" value="{{$item1->name}}">
-            <input type="hidden" name="comment" value="{{$item1->comment}}">
+            <input type="hidden" name="userid" value="{{$item1->id}}">
+            <input type="hidden" name="productname" value="{{$item1->productname}}">
         </form>  
         <hr>
     @endforeach
@@ -47,7 +45,7 @@
         <form action="/timeline/comment" method = "post">
         @csrf
             <p>name:<input type="text" name="name"></p>
-            <p>comment:<input type="text" name="comment"></p>
+            <p>comment:<input type="text" name="comment" class="commentform"></p>
             <input type="hidden" name="productname" value="{{$item->name}}">
             <p><input type="submit" value="send" class="button"></p>
         </form>

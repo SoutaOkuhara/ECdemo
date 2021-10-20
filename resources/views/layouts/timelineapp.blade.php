@@ -13,6 +13,9 @@
         background-color:#0F044C;
         padding:2% 0;
     }
+    ul{
+        font-size:12pt;
+    }
 
     .user{
         background-color:#787A91;
@@ -28,9 +31,37 @@
         margin:10px;
     }
 
+    .main{
+        background-color:#EEEEEE;
+        padding:30px;
+    }
+
+
+    .detail{
+        font-size:20px;
+        margin:5%;
+        float:left;
+    }
+
+    .article{
+        text-align:center;
+    }
+
+    .articlep{
+        font-size:20px;
+    }
+
+    img{
+        width:50%;
+        height:50%;
+        margin-bottom:5%;
+    }
+
+    .good{
+        display:inline-block;
+    }
 
     .button{
-        display: inline-block;
         padding: 0.5em 1em 0.3em;
         color: #0099ff;
         border: none;
@@ -49,24 +80,28 @@
         cursor: pointer;
     }
 
+    .comment form{
+        display:inline-block;
+    }
 
-    .main{
-        background-color:#EEEEEE;
-        padding:30px;
+    .comment h3{
         margin:3% 0;
+        background:#141E61;
+        padding:15px;
+        color:white;
     }
 
-    .adminContent{
-        text-align:right;
-        color:red;
+    .commentAdd h3{
+        margin:3% 0;
+        background:#141E61;
+        padding:15px;
+        color:white;
     }
 
-    .chat p{
-        margin:2% 0;
-    }
-
-    .chatform{
-        text-align:center;
+    .commentform{
+        margin-top:2%;
+        width:500px;
+        height:100px;
     }
 
     </style>

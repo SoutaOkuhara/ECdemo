@@ -13,77 +13,113 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//ユーザー側
+
+//ユーザー側topページ
+Route::get('/','MenuController@index');
+
+//ユーザー側商品
+Route::group(['prefix' => 'product'], function () {
+    Route::get('/','IndexController@shop');
+    Route::post('/','IndexController@postSession');
+    Route::post('/search','IndexController@search');
+    Route::post('/fav','IndexController@fav');
+    Route::post('/detail','IndexController@detail')->middleware("auth");
 });
 
-Route::get('product','IndexController@index')->middleware("auth");
-Route::get('product/add','IndexController@add')->middleware("auth");
-Route::post('product/add','IndexController@create');
-Route::get('product/edit','IndexController@edit')->middleware("auth");
-Route::post('product/edit','IndexController@update');
-Route::get('product/del','IndexController@del')->middleware("auth");
-Route::post('product/del','IndexController@remove');
-Route::get('product/shop','IndexController@shop');
-Route::post('product/shop','IndexController@postSession');
-Route::post('product/search','IndexController@search');
-Route::post('product/fav','IndexController@fav');
-Route::get('product/detailadd','IndexController@detailaddget')->middleware("auth");
-Route::post('product/detailadd','IndexController@detailaddpost');
-Route::post('product/detail','IndexController@detail')->middleware("auth");
-Route::get('product/sales','IndexController@sales')->middleware("auth");
+//ユーザー運用
+Route::group(['prefix' => 'user'], function () {
+    Route::get('/','UserController@index')->middleware("auth");
+    Route::get('/auth','UserController@getAuth');
+    Route::post('/auth','UserController@postAuth');
+    Route::get('/logout','UserController@logout');
+});
 
-
-Route::get('user','UserController@index')->middleware("auth");
-Route::get('user/auth','UserController@getAuth');
-Route::post('user/auth','UserController@postAuth');
-Route::get('user/logout','UserController@logout');
-
-
-Route::get('company','CompanyController@index')->middleware("auth");
-Route::get('company/add','CompanyController@add')->middleware("auth");
-Route::post('company/add','CompanyController@create');
-Route::get('company/del','CompanyController@del')->middleware("auth");
-Route::post('company/del','CompanyController@remove');
-Route::get('company/edit','CompanyController@edit')->middleware("auth");
-Route::post('company/edit','CompanyController@update');
-
-Route::get('contact/list','ContactController@index');
-Route::get('contact','ContactController@add');
-Route::post('contact','ContactController@create');
-Route::get('contact/anslist','ContactController@answerlist')->middleware("auth");
-Route::get('contact/ans','ContactController@ansget')->middleware("auth");
-Route::post('contact/ans','ContactController@anspost');
+//ユーザー側お問い合わせ
+Route::group(['prefix' => 'contact'], function () {
+    Route::get('/list','ContactController@index');
+    Route::get('/','ContactController@add');
+    Route::post('/','ContactController@create');
+});
 
 Route::get('person','PersonController@index');
 
+//ユーザー側レビューページ
 Route::post('review','ReviewController@index');
 Route::post('review/add','ReviewController@add');
 
-Route::get('mypage','MyPageController@index')->middleware("auth");
-Route::post('mypage','MyPageController@del');
-Route::get('mypage/basket','MyPageController@basket')->middleware("auth");
-Route::post('mypage/basket','MyPageController@basketdel');
-Route::get('mypage/buy','MyPageController@buy')->middleware("auth");
-Route::post('mypage/buy','MyPageController@thanks');
-Route::post('mypage/view/del','MyPageController@viewDel');
-Route::get('mypage/chat','MyPageController@chat')->middleware("auth");
-Route::post('mypage/chat','MyPageController@chatpost');
-Route::get('mypage/chatUser','MyPageController@chatUser')->middleware("auth");
-Route::get('mypage/chatAdmin','MyPageController@chatAdmin')->middleware("auth");
-Route::post('mypage/chatAdmin','MyPageController@chatAdminpost')->middleware("auth");
+//ユーザー側マイページ
+Route::group(['prefix' => 'mypage'], function () {
+    Route::get('/','MyPageController@index')->middleware("auth");
+    Route::post('/','MyPageController@del');
+    Route::get('/basket','MyPageController@basket')->middleware("auth");
+    Route::post('/basket','MyPageController@basketdel');
+    Route::get('/buy','MyPageController@buy')->middleware("auth");
+    Route::post('/buy','MyPageController@thanks');
+    Route::post('/view/del','MyPageController@viewDel');
+    Route::get('/chat','MyPageController@chat')->middleware("auth");
+    Route::post('/chat','MyPageController@chatpost');
+});
 
-Route::get('timeline','TimelineController@index');
-Route::get('timeline/add','TimelineController@add')->middleware("auth");
-Route::post('timeline/add','TimelineController@create');
-Route::get('timeline/comment','TimelineController@comment')->middleware("auth");
-Route::post('timeline/comment','TimelineController@commentpost')->middleware("auth");
-Route::get('timeline/good','TimelineController@good');
-Route::get('timeline/bad','TimelineController@bad');
-Route::get('timeline/comment/good','TimelineController@goodcomment');
-Route::get('timeline/comment/bad','TimelineController@badcomment');
+//ユーザー側タイムライン
+Route::group(['prefix' => 'timeline'], function () {
+    Route::get('/','TimelineController@index');
+    Route::get('/comment','TimelineController@comment')->middleware("auth");
+    Route::post('/comment','TimelineController@commentpost')->middleware("auth");
+    Route::get('/good','TimelineController@good');
+    Route::get('/bad','TimelineController@bad');
+    Route::get('/comment/good','TimelineController@goodcomment');
+    Route::get('/comment/bad','TimelineController@badcomment');
+});
 
-Route::get('index','MenuController@index');
+
+// 管理者側
+
+
+//管理者側商品
+Route::group(['prefix' => 'admin/product'], function () {
+    Route::get('/','IndexController@index')->middleware("auth");
+    Route::get('/add','IndexController@add')->middleware("auth");
+    Route::post('/add','IndexController@create');
+    Route::get('/edit','IndexController@edit')->middleware("auth");
+    Route::post('/edit','IndexController@update');
+    Route::get('/del','IndexController@del')->middleware("auth");
+    Route::post('/del','IndexController@remove');
+    Route::get('/detailadd','IndexController@detailaddget')->middleware("auth");
+    Route::post('/detailadd','IndexController@detailaddpost');
+    Route::get('/sales','IndexController@sales')->middleware("auth");
+});
+
+//管理者側運営会社
+Route::group(['prefix' => 'admin/company'], function () {
+    Route::get('/','CompanyController@index')->middleware("auth");
+    Route::get('/add','CompanyController@add')->middleware("auth");
+    Route::post('/add','CompanyController@create');
+    Route::get('/del','CompanyController@del')->middleware("auth");
+    Route::post('/del','CompanyController@remove');
+    Route::get('/edit','CompanyController@edit')->middleware("auth");
+    Route::post('/edit','CompanyController@update');
+});
+
+//管理者側お問い合わせ
+Route::group(['prefix' => 'admin/contact'], function () {
+    Route::get('/anslist','ContactController@answerlist')->middleware("auth");
+    Route::get('/ans','ContactController@ansget')->middleware("auth");
+    Route::post('/ans','ContactController@anspost');
+});
+
+//管理者側マイページ
+Route::group(['prefix' => 'admin/mypage'], function () {
+    Route::get('/chatUser','MyPageController@chatUser')->middleware("auth");
+    Route::get('/chatAdmin','MyPageController@chatAdmin')->middleware("auth");
+    Route::post('/chatAdmin','MyPageController@chatAdminpost')->middleware("auth");
+});
+
+//管理者側タイムライン
+Route::group(['prefix' => 'admin/timeline'], function () {
+    Route::get('/add','TimelineController@add')->middleware("auth");
+    Route::post('/add','TimelineController@create');
+});
 
 Auth::routes();
 

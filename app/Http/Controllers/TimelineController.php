@@ -58,31 +58,29 @@ class TimelineController extends Controller
 
     public function good(Request $request){
         $para1 = [
-            'productname'=>$request->productname,
+            'id'=>$request->id,
         ];
-        DB::update('update timeline set good = good + 1  where productname=:productname',$para1);
+        DB::update('update timeline set good = good + 1  where id=:id',$para1);
         return redirect('/timeline');
     }
 
     public function bad(Request $request){
         $para1 = [
-            'productname'=>$request->productname,
+            'id'=>$request->id,
         ];
-        DB::update('update timeline set bad = bad + 1  where productname=:productname',$para1);
+        DB::update('update timeline set bad = bad + 1  where id=:id',$para1);
         return redirect('/timeline');
     }
 
     public function goodcomment(Request $request){
         $user = Auth::user();
         $para1 = [
-            'productname'=>$request->productname,
-            'username'=>$request->username,
-            'comment'=>$request->comment,
+            'userid'=>$request->userid,
         ];
         $para2 = [
             'productname'=>$request->productname,
         ];
-        DB::update('update TLcomment set good = good + 1  where productname=:productname and name=:username and comment=:comment',$para1);
+        DB::update('update TLcomment set good = good + 1  where id = :userid',$para1);
         $item = DB::select('select * from prodetail where name = :productname',$para2);
         $items1 = DB::select('select * from TLcomment where productname = :productname',$para2);
         return view('timeline.TLcomment',['item'=>$item[0],'user'=>$user,'items1'=>$items1]);
@@ -91,14 +89,12 @@ class TimelineController extends Controller
     public function badcomment(Request $request){
         $user = Auth::user();
         $para1 = [
-            'productname'=>$request->productname,
-            'username'=>$request->username,
-            'comment'=>$request->comment,
+            'userid'=>$request->userid,
         ];
         $para2 = [
             'productname'=>$request->productname,
         ];
-        DB::update('update TLcomment set bad = bad + 1  where productname=:productname and name=:username and comment=:comment',$para1);
+        DB::update('update TLcomment set bad = bad + 1  where id = :userid',$para1);
         $item = DB::select('select * from prodetail where name = :productname',$para2);
         $items1 = DB::select('select * from TLcomment where productname = :productname',$para2);
         return view('timeline.TLcomment',['item'=>$item[0],'user'=>$user,'items1'=>$items1]);
