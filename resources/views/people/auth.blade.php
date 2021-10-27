@@ -7,7 +7,7 @@
 
 @section('content')
 <p>{{$message}}</p>
-<a href="/register"><button class="button">アカウントを新規作成する</button></a>
+<p>ログインするアカウントを変更するには下記からログインしてください</p>
 <form action="/user/auth" method="post">
     <table>
         @csrf
@@ -16,4 +16,5 @@
         <tr><th></th><td><input type="submit" value="send" class="button"></td></tr>
     </table>
 </form>
+<a href="/register"><button class="button">アカウントを新規作成する</button></a>
 @endsection

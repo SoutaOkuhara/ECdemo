@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>@yield('title')</title>
+    <title>@yield('title')(管理者)</title>
     <style>
     body{
         font-size:16pt;
@@ -10,7 +10,7 @@
         font-size:50pt;
         text-align:center;
         color:#f6f6f6;
-        background-color:#0F044C;
+        background-color:#CC3333;
         padding:2% 0;
     }
 
@@ -74,12 +74,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>@yield('title')</h1>
+    <h1>@yield('title')(管理者)</h1>
     @section('menubar')
     <ul>
         <li>@show</li>
     </ul>
-    <a href="/"><button class="button">ホームへ</button></a>
+    <a href="/admin/"><button class="button">ホームに戻る</button></a>
     <hr>
     <div class = "content">
     @yield('content')

@@ -25,6 +25,6 @@ class ReviewController extends Controller
             'productName'=>$request->productName,
         ];
         DB::insert('insert into review (name,star,detail,productName) values (:name,:star,:detail,:productName)',$param);
-        return redirect('/product/shop');
+        return redirect('/product');
     }
 }

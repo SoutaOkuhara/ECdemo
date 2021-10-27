@@ -18,7 +18,6 @@
                 <td><input type="text" name="searchName"></td>
                 <td><input type="submit" value ='検索' name="search" class="button"></td>
     </form>  
-    <a href="/contact/list"><button class="button">お問い合わせ一覧ページへ</button></a>
 
     <div class = "main">
     @if(Auth::check())

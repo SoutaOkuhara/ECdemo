@@ -1,4 +1,4 @@
-@extends("layouts.chatapp")
+@extends("admin.layouts.chatapp")
 @section("title",'ChatAdminPage')
 @section('menubar')
     @parent

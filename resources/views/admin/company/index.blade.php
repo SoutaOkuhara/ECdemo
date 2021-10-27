@@ -1,4 +1,4 @@
-@extends("layouts.detailapp")
+@extends("admin.layouts.detailapp")
 @section("title",'CompanyAdd')
 @section('menubar')
     @parent
@@ -28,5 +28,5 @@
         </tr>
     @endforeach  
 </table>
-<p><a href="/admin/company/add">運営会社追加</a></p>
+<p><a href="/admin/company/add" class="button">運営会社追加</a></p>
 @endsection

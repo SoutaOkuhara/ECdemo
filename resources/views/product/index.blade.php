@@ -1,4 +1,4 @@
-@extends("layouts.mypageapp")
+@extends("admin.layouts.mypageapp")
 @section("title",'product')
 @section('menubar')
     @parent
@@ -16,17 +16,17 @@
      <tr><th>productName</th><th>price</th><th>detail</th><th>point</th></tr>
      @foreach($items as $item)
         <tr>
-        <form action="/product/detailadd">
+        <form action="/admin/product/detailadd">
             <td><input type="submit" name = "detail" value="{{$item->name}}"></td>
         </form>
             <td>{{$item->price}}</td>
             <td>{{$item->detail}}</td>
             <td>{{$item->point}}</td>
-            <form action="/product/del">
+            <form action="/admin/product/del">
                 <td><input type="submit" value="削除" class = "button"></td>
                 <input type="hidden" name="id" value="{{$item->id}}">
             </form>
-            <form action="/product/edit">
+            <form action="/admin/product/edit">
                 <td><input type="submit" value="編集" class = "button"></td>
                 <input type="hidden" name="id" value="{{$item->id}}">
             </form>

@@ -1,4 +1,4 @@
-@extends("layouts.detailapp")
+@extends("admin.layouts.detailapp")
 @section("title",'Sales')
 @section('menubar')
     @parent

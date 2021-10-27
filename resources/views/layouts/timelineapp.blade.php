@@ -45,6 +45,9 @@
 
     .article{
         text-align:center;
+        margin:5% 10%;
+        border:solid 3px black;
+        padding:5%;
     }
 
     .articlep{
@@ -114,6 +117,7 @@
     <ul>
         <li>@show</li>
     </ul>
+    <a href="/"><button class="button">ホームへ</button></a>
     <hr>
     <div class = "content">
     @yield('content')

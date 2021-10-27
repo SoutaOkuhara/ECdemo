@@ -1,5 +1,5 @@
 @extends("layouts.homeapp")
-@section("title",'Home')
+@section("title",'OS Online Shop')
 @section('menubar')
     @parent
     ホーム
@@ -11,11 +11,15 @@
 @else
 <p>※ログインしていません。(<a href="/login">ログイン</a> | <a href="/register">登録</a>)</p>
 @endif
-<h2>Welcome to EC Site!!</h2>
+<h2>Welcome to OS Online Shop!!</h2>
 <div class="contents">
     <div class="indent">
         <p>様々な商品を見つけよう！！</p>
-        <a href="/product/shop"><button class="button">shopページへ</button></a>
+        <a href="/product/"><button class="button">shopページへ</button></a>
+    </div> 
+    <div class="indent">
+        <p>タイムラインで一押し商品情報をGet!!</p>
+        <a href="/timeline"><button class="button">タイムラインへ</button></a>
     </div>  
     <div class="indent"> 
         <p>お問い合わせやよくあるご質問</p>
@@ -24,6 +28,10 @@
     <div class="indent">
         <p>ログインして便利な機能を使おう！！</p>
         <a href="/user/auth"><button class="button">ログイン・新規作成する</button></a>
+    </div> 
+    <div class="indent">
+        <p>チャットで気軽になんでもご相談!</p>
+        <a href="/mypage/chat"><button class="button">チャットページへ</button></a>
     </div> 
 </div> 
     <div class="rank">

@@ -1,4 +1,4 @@
-@extends("layouts.shopapp")
+@extends("admin.layouts.shopapp")
 @section("title",'ProductDelete')
 @section('menubar')
     @parent

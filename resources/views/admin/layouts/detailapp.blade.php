@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>@yield('title')</title>
+    <title>@yield('title')(管理者側)</title>
     <style>
     body{
         font-size:16pt;
@@ -10,8 +10,11 @@
         font-size:50pt;
         text-align:center;
         color:#f6f6f6;
-        background-color:#0F044C;
+        background-color:#CC3333;
         padding:2% 0;
+    }
+    ul{
+        font-size:12pt;
     }
 
     .user{
@@ -28,6 +31,38 @@
         margin:10px;
     }
 
+    .main{
+        background-color:#EEEEEE;
+        padding:30px;
+    }
+
+    th{
+        background-color:#999;
+        color:#fff;
+        padding:5px 10px;
+    }
+
+    td{
+        border:solid 1px #aaa;
+        color:#999;
+        padding:5px 10px;
+    }
+
+    table{
+        margin:3% 0;
+    }
+
+    .detail{
+        font-size:20px;
+        margin:5%;
+        float:left;
+    }
+
+    img{
+        width:50%;
+        height:50%;
+        margin-bottom:5%;
+    }
 
     .button{
         display: inline-block;
@@ -49,37 +84,17 @@
         cursor: pointer;
     }
 
-
-    .main{
-        background-color:#EEEEEE;
-        padding:30px;
-        margin:3% 0;
-    }
-
-    .adminContent{
-        text-align:right;
-        color:red;
-    }
-
-    .chat p{
-        margin:2% 0;
-    }
-
-    .chatform{
-        text-align:center;
-    }
-
     </style>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>@yield('title')</h1>
+    <h1>@yield('title')(管理者側)</h1>
     @section('menubar')
     <ul>
         <li>@show</li>
     </ul>
-    <a href="/"><button class="button">ホームへ</button></a>
+    <a href="/admin/"><button class="button">ホームに戻る</button></a>
     <hr>
     <div class = "content">
     @yield('content')

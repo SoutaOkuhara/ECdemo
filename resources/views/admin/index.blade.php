@@ -21,7 +21,7 @@
         <a href="/admin/mypage/chatUser"><button class="button">チャットページ</button></a>
     </div> 
     <div class="indent">
-        <a href="/admin/timeline/"><button class="button">タイムライン管理ページ</button></a>
+        <a href="/admin/timeline/add"><button class="button">タイムライン管理ページ</button></a>
     </div> 
 </div> 
 @endsection

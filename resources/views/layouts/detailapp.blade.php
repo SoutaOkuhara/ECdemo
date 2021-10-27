@@ -94,6 +94,7 @@
     <ul>
         <li>@show</li>
     </ul>
+    <a href="/"><button class="button">ホームへ</button></a>
     <hr>
     <div class = "content">
     @yield('content')

@@ -1,4 +1,4 @@
-@extends("layouts.reviewapp")
+@extends("admin.layouts.reviewapp")
 @section("title",'ChatUser')
 @section('menubar')
     @parent

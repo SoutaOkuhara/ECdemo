@@ -18,6 +18,10 @@ class UserController extends Controller
 
     public function getAuth(Request $request){
         $param = ['message'=>'ログインしてください。'];
+        if(Auth::user() != null){
+            $user = Auth::user();
+            $param = ['message'=>'ユーザー名 '.$user->name.'としてログインしています。'];
+        }
         return view('people.auth',$param);
     }
 
