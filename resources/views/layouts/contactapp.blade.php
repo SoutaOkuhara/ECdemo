@@ -4,35 +4,22 @@
     <style>
     body{
         font-size:16pt;
-        color:#999;
         margin:5px;
     }
     h1{
         font-size:50pt;
-        text-align:right;
+        text-align:center;
         color:#f6f6f6;
-        margin:-20px 0px -30px 0px;
-        letter-spacing:-4pt;
+        background-color:#0F044C;
+        padding:2% 0;
     }
     ul{
         font-size:12pt;
-    }
-    hr{
-        margin:25px 100px; 
-        border-top:1px dashed #ddd;
-    }
-    .menutitle{
-        font-size:14pt;
-        font-weight:bold;
-        margin:10px;
-        border-bottom:solid 1px #ccc;
-        color:#ccc;
     }
 
     .content{
         margin:10px;
     }
-
 
     th{
         background-color:#999;
@@ -46,16 +33,42 @@
         padding:5px 10px;
     }
 
+
+    .button{
+        display: inline-block;
+        padding: 0.5em 1em 0.3em;
+        color: #0099ff;
+        border: none;
+        border-radius: 5px;
+        background: linear-gradient(
+            -45deg,
+            #ddeeff 25%,
+            #c6e6fb 25%,
+            #c6e6fb 50%,
+            #ddeeff 50%,
+            #ddeeff 75%,
+            #c6e6fb 75%,
+            #c6e6fb
+        );
+        background-size: 10px 10px;
+        cursor: pointer;
+    }
+
+    .indent{
+        display:inline-block;
+        margin-left:5%;
+    }
+
     .form{
+        background-color:#EEEEEE;
+        padding:30px;
         text-align:center;
-        padding:5%;
-        background-color:rgba(255,0,0,0.25);
-        margin:5%;
     }
 
     .form p{
         margin:3%;
     }
+
     </style>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -63,11 +76,11 @@
 <body>
     <h1>@yield('title')</h1>
     @section('menubar')
-    <h2 class="menutitle">*メニュー</h2>
     <ul>
         <li>@show</li>
     </ul>
-    <hr size = "1">
+    <a href="/"><button class="button">ホームへ</button></a>
+    <hr>
     <div class = "content">
     @yield('content')
     </div>
